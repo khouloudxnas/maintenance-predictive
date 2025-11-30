@@ -750,7 +750,7 @@ elif section == "📖 Ressources":
             #### 🎓 Udemy
             Multiples cours sur la maintenance prédictive, du débutant à l'expert.
             
-            [Voir les cours →](https://www.udemy.com/topic/predictive-maintenance/)
+            [Voir les cours ](https://www.udemy.com/topic/predictive-maintenance/)
             """)
     
     with tab2:
@@ -987,5 +987,6 @@ elif section == "ℹ️ À propos":
         et accessible.
 
         """)
+
 
 

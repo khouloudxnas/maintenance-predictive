@@ -126,102 +126,606 @@ if section == "🏠 Accueil":
             st.markdown("### ℹ️ À propos")
             st.write("Découvrez les objectifs du projet et les fonctionnalités principales.")
 
-# THÉORIE
 elif section == "📚 Théorie":
-    st.title("📚 Théorie & Concepts")
+    st.title("📚 Formation Complète : De Débutant à Expert")
     
-    st.markdown("### Explorez les concepts clés de la maintenance prédictive")
+    st.markdown("""
+    ### 🎓 Parcours d'apprentissage progressif
+    Suivez ce parcours étape par étape pour maîtriser la maintenance prédictive
+    """)
     
-    with st.expander("🎯 **Introduction à la Maintenance Prédictive** - Qu'est-ce que c'est ?", expanded=True):
+    # ============ NIVEAU 1: DÉBUTANT ============
+    st.markdown("---")
+    st.markdown("## 🟢 NIVEAU 1 : Les Fondamentaux")
+    
+    with st.expander("📖 **Chapitre 1.1 : Qu'est-ce qu'une panne ?**", expanded=True):
         st.markdown("""
-        #### Qu'est-ce que la maintenance prédictive ?
+        #### 🔧 Comprendre les pannes industrielles
         
-        La maintenance prédictive vise à **prévoir les défaillances** d'une machine avant qu'elles ne surviennent.
+        Une **panne** est l'arrêt imprévu d'une machine qui l'empêche de fonctionner correctement.
         
-        **Avantages clés :**
-        - ✅ Réduction des coûts de maintenance
-        - ✅ Amélioration de la disponibilité des équipements
-        - ✅ Augmentation de la sécurité des installations
-        - ✅ Optimisation de la planification
+        **Exemple concret :** Imaginez une voiture
+        - ⚠️ **Panne soudaine** : Le moteur s'arrête sans prévenir sur l'autoroute
+        - 🔴 **Conséquences** : Danger, coûts de dépannage, retard
+        - 💡 **Et si on avait pu le prévoir ?** C'est là qu'intervient la maintenance prédictive !
+        
+        #### Types de pannes industrielles :
+        
+        | Type de panne | Description | Exemple | Coût moyen |
+        |---------------|-------------|---------|------------|
+        | 🔴 **Catastrophique** | Arrêt complet et brutal | Rupture d'arbre moteur | 50 000€ - 500 000€ |
+        | 🟡 **Progressive** | Dégradation lente | Usure de roulement | 5 000€ - 50 000€ |
+        | 🟠 **Intermittente** | Défaut par moments | Court-circuit électrique | 1 000€ - 20 000€ |
+        | 🟢 **Mineure** | Fonctionne en mode dégradé | Fuite d'huile légère | 500€ - 5 000€ |
+        
+        **💰 Impact économique d'une panne non planifiée :**
+        - Coût de réparation d'urgence : **×3 à ×5** plus cher
+        - Perte de production : **10 000€ à 100 000€ par heure** (selon l'industrie)
+        - Impact sur les livraisons clients : **Pénalités contractuelles**
         """)
-        st.markdown("🔗 [En savoir plus sur Wikipedia](https://fr.wikipedia.org/wiki/Maintenance_prédictive)")
+        
+        st.info("🎯 **Point clé :** Une panne coûte 3 à 5 fois plus cher qu'une intervention planifiée !")
     
-    with st.expander("🔄 **Types de maintenance** - Corrective, Préventive, Prédictive"):
+    with st.expander("📖 **Chapitre 1.2 : Les 3 stratégies de maintenance**"):
+        st.markdown("""
+        #### Comment gérer les pannes ? 3 approches possibles
+        """)
+        
         col1, col2, col3 = st.columns(3)
         
         with col1:
-            st.markdown("#### 🔴 Corrective")
-            st.write("Intervention **après panne**")
-            st.write("⚠️ Coûteux et imprévisible")
+            st.markdown("""
+            ### 🔴 Maintenance CORRECTIVE
+            **"On répare quand ça casse"**
+            
+            **Principe :**
+            - Attendre la panne
+            - Réparer en urgence
+            
+            **Avantages :**
+            - ✅ Pas de planification nécessaire
+            - ✅ Utilisation maximale des pièces
+            
+            **Inconvénients :**
+            - ❌ Pannes imprévisibles
+            - ❌ Coûts très élevés
+            - ❌ Risques de sécurité
+            - ❌ Arrêts de production
+            
+            **Coût annuel :** 100 000€
+            **Disponibilité :** 75%
+            
+            🏭 **Utilisé pour :** Équipements non critiques (ventilateur de bureau)
+            """)
         
         with col2:
-            st.markdown("#### 🟡 Préventive")
-            st.write("Planifiée selon un **calendrier**")
-            st.write("📅 Régulière mais parfois inutile")
+            st.markdown("""
+            ### 🟡 Maintenance PRÉVENTIVE
+            **"On change selon le calendrier"**
+            
+            **Principe :**
+            - Interventions programmées
+            - Remplacement périodique
+            
+            **Avantages :**
+            - ✅ Pannes réduites
+            - ✅ Planification possible
+            - ✅ Meilleure sécurité
+            
+            **Inconvénients :**
+            - ❌ Changements parfois inutiles
+            - ❌ Coût des pièces neuves
+            - ❌ Arrêts planifiés fréquents
+            
+            **Coût annuel :** 70 000€
+            **Disponibilité :** 85%
+            
+            🏭 **Utilisé pour :** Équipements standards (pompes, compresseurs)
+            """)
         
         with col3:
-            st.markdown("#### 🟢 Prédictive")
-            st.write("Basée sur l'**analyse des données**")
-            st.write("📊 Optimale et économique")
+            st.markdown("""
+            ### 🟢 Maintenance PRÉDICTIVE
+            **"On intervient au bon moment"**
+            
+            **Principe :**
+            - Surveillance continue
+            - Intervention basée sur l'état réel
+            
+            **Avantages :**
+            - ✅ Interventions optimales
+            - ✅ Réduction des coûts
+            - ✅ Disponibilité maximale
+            - ✅ Planification précise
+            
+            **Inconvénients :**
+            - ⚠️ Investissement initial
+            - ⚠️ Compétences requises
+            
+            **Coût annuel :** 40 000€
+            **Disponibilité :** 95%+
+            
+            🏭 **Utilisé pour :** Équipements critiques (turbines, robots)
+            """)
         
         st.markdown("---")
-        st.markdown("🔗 [Article sur les types de maintenance](https://www.maintenance.org/types-de-maintenance)")
-    
-    with st.expander("📡 **Capteurs et mesures** - Les technologies de surveillance"):
-        st.markdown("#### Les principaux capteurs utilisés :")
-        
-        sensors_data = {
-            "Capteur": ["🌊 Vibration", "🌡️ Température", "⚡ Courant électrique", "🔊 Acoustique"],
-            "Détecte": ["Déséquilibres, usure des roulements", "Surchauffe, friction", "Anomalies moteurs", "Fissures, fuites"],
-            "Criticité": ["Élevée", "Moyenne", "Élevée", "Moyenne"]
-        }
-        
-        df_sensors = pd.DataFrame(sensors_data)
-        st.dataframe(df_sensors, use_container_width=True)
-    
-    with st.expander("🔬 **Méthodes d'analyse** - Comment analyser les données ?"):
         st.markdown("""
-        #### Approches principales :
+        #### 📊 Comparaison chiffrée sur 1 machine pendant 5 ans
         
-        1. **📊 Analyse statistique** : Étude des tendances et patterns historiques
-        2. **🤖 Machine Learning** : Détection automatique des anomalies
-        3. **📈 Analyse spectrale** : Analyse fréquentielle des vibrations
-        4. **🌐 IoT** : Collecte et traitement des données en temps réel
+        | Critère | Corrective | Préventive | Prédictive |
+        |---------|-----------|-----------|------------|
+        | **Coût total 5 ans** | 500 000€ | 350 000€ | 250 000€ |
+        | **Nombre de pannes** | 25 | 8 | 3 |
+        | **Temps d'arrêt** | 500h | 200h | 50h |
+        | **Disponibilité** | 75% | 85% | 95% |
+        | **ROI** | - | 30% | 50% |
+        
+        💡 **Conclusion :** La maintenance prédictive permet d'économiser **250 000€ sur 5 ans** !
         """)
-        st.markdown("🔗 [Tutoriel Machine Learning Maintenance](https://www.coursera.org/learn/predictive-maintenance)")
     
-    with st.expander("📊 **Indicateurs clés (KPI)** - Mesurer la performance"):
-        st.markdown("#### Les KPI essentiels en maintenance :")
+    with st.expander("📖 **Chapitre 1.3 : Principe de la maintenance prédictive**"):
+        st.markdown("""
+        #### 🎯 Comment ça marche concrètement ?
         
-        col1, col2 = st.columns(2)
+        La maintenance prédictive repose sur **4 étapes simples** :
         
-        with col1:
-            st.markdown("""
-            **⏱️ MTBF** (Mean Time Between Failures)
-            - Temps moyen entre pannes
-            - Mesure la fiabilité
-            """)
-            
-            st.markdown("""
-            **🔧 MTTR** (Mean Time To Repair)
-            - Temps moyen de réparation
-            - Mesure l'efficacité de maintenance
-            """)
+        ```
+        1. 📡 MESURER           →  2. 📊 ANALYSER
+           ↑                                    ↓
+        4. 🔧 INTERVENIR      ←  3. 🚨 ALERTER
+        ```
         
-        with col2:
-            st.markdown("""
-            **✅ Disponibilité**
-            - Proportion de temps opérationnel
-            - Objectif : > 95%
-            """)
-            
-            st.markdown("""
-            **💯 Fiabilité**
-            - Probabilité de bon fonctionnement
-            - Essentielle pour la planification
-            """)
+        #### Exemple concret : Un moteur électrique
         
-        st.markdown("🔗 [Guide complet sur les KPI Maintenance](https://www.maintenance.org/indicateurs-KPI)")
+        **🏭 Situation :** Moteur critique d'une chaîne de production
+        
+        **1️⃣ MESURER (Capteurs installés)**
+        - 🌡️ Température : 65°C (normale : 60°C ± 5°C)
+        - 🌊 Vibration : 3.2 mm/s (normale : < 2.8 mm/s)
+        - ⚡ Courant : 42A (normal : 38A ± 2A)
+        - 🔊 Bruit : 78 dB (normal : < 75 dB)
+        
+        **2️⃣ ANALYSER (Intelligence Artificielle)**
+        ```
+        Algorithme détecte :
+        - ⚠️ Vibrations anormales : +14% en 2 semaines
+        - ⚠️ Température en hausse : +5°C en 1 mois
+        - ⚠️ Consommation électrique : +10%
+        
+        → Diagnostic IA : Usure probable du roulement avant
+        → Probabilité de panne : 85% dans 15-20 jours
+        ```
+        
+        **3️⃣ ALERTER (Notification automatique)**
+        - 📧 Email au responsable maintenance
+        - 📱 SMS si criticité élevée
+        - 📋 Ticket créé automatiquement
+        - 📅 Fenêtre d'intervention suggérée : 12-18 jours
+        
+        **4️⃣ INTERVENIR (Action planifiée)**
+        - 🗓️ Intervention planifiée le jour 16 (pendant arrêt production)
+        - 🛠️ Pièces commandées à l'avance (roulement : 350€)
+        - ⏱️ Durée d'intervention : 2h (vs 12h en panne d'urgence)
+        - 💰 Coût total : 800€ (vs 8 000€ en panne)
+        
+        #### 💡 Résultat :
+        - ✅ Panne évitée
+        - ✅ Production non impactée
+        - ✅ Économie : 7 200€
+        - ✅ Sécurité préservée
+        """)
+    
+    # ============ NIVEAU 2: INTERMÉDIAIRE ============
+    st.markdown("---")
+    st.markdown("## 🟡 NIVEAU 2 : Technologies et Capteurs")
+    
+    with st.expander("📖 **Chapitre 2.1 : Les capteurs - Les yeux de vos machines**"):
+        st.markdown("""
+        #### 🔬 Comment surveiller une machine ?
+        
+        Une machine industrielle émet des **signaux** qui révèlent son état de santé.
+        Les capteurs sont comme des **médecins** qui examinent le patient en continu.
+        
+        ---
+        
+        ### 🌊 Capteur de VIBRATION
+        **Ce qu'il mesure :** Les oscillations et mouvements de la machine
+        
+        **Pourquoi c'est important ?**
+        - Une machine en bon état vibre de façon régulière et prévisible
+        - Une anomalie (usure, déséquilibre) crée des vibrations inhabituelles
+        
+        **Défauts détectés :**
+        - 🔧 Roulements usés (90% de fiabilité de détection)
+        - ⚖️ Déséquilibre du rotor
+        - 🔩 Desserrage de fixations
+        - ⚙️ Défaut d'alignement
+        - 🦷 Usure d'engrenages
+        
+        **Mesures :**
+        - Accélération (m/s²)
+        - Vélocité (mm/s) ← **Plus utilisé**
+        - Déplacement (μm)
+        
+        **Exemple concret :**
+        ```
+        Roulement sain     : 1.5 mm/s
+        Usure légère       : 2.8 mm/s → ⚠️ Surveiller
+        Usure avancée      : 4.5 mm/s → 🚨 Planifier intervention
+        Défaillance proche : 7.2 mm/s → 🔴 Urgent !
+        ```
+        
+        **Prix :** 200€ - 2 000€ selon la précision
+        
+        ---
+        
+        ### 🌡️ Capteur de TEMPÉRATURE
+        **Ce qu'il mesure :** La chaleur émise par la machine
+        
+        **Pourquoi c'est important ?**
+        - L'usure et la friction créent de la chaleur excessive
+        - Une surchauffe indique un problème de lubrification ou de charge
+        
+        **Défauts détectés :**
+        - 🛢️ Manque de lubrification
+        - 🔥 Friction excessive
+        - ⚡ Surcharge électrique
+        - ❄️ Problème de refroidissement
+        
+        **Types de capteurs :**
+        - **Thermocouple** : Contact direct, précis (±0.5°C)
+        - **Infrarouge** : Sans contact, rapide
+        - **RTD** : Très haute précision (±0.1°C)
+        
+        **Exemple concret :**
+        ```
+        Moteur électrique :
+        Température normale  : 60°C ± 5°C
+        Échauffement léger   : 70°C → ⚠️ Vérifier lubrification
+        Surchauffe           : 85°C → 🚨 Arrêt requis
+        Critique             : 95°C → 🔴 Risque d'incendie
+        ```
+        
+        **Prix :** 20€ - 500€
+        
+        ---
+        
+        ### ⚡ Capteur de COURANT électrique
+        **Ce qu'il mesure :** La consommation électrique des moteurs
+        
+        **Pourquoi c'est important ?**
+        - Un moteur qui force consomme plus
+        - Les anomalies électriques précèdent souvent les pannes mécaniques
+        
+        **Défauts détectés :**
+        - 🔌 Court-circuit
+        - 🔋 Surcharge mécanique
+        - ⚙️ Déséquilibre des phases
+        - 🔄 Défaut de roulement (détection précoce)
+        
+        **Mesures :**
+        - Intensité (Ampères)
+        - Tension (Volts)
+        - Puissance (Watts)
+        - Facteur de puissance
+        
+        **Exemple concret :**
+        ```
+        Pompe industrielle (moteur 15 kW) :
+        Courant nominal      : 28A
+        Variation normale    : ±2A
+        Pompe encrassée      : 32A → ⚠️ Maintenance préventive
+        Roulement défectueux : 35A avec pics → 🚨 Intervention
+        Blocage imminent     : 42A → 🔴 Arrêt immédiat
+        ```
+        
+        **Prix :** 100€ - 1 000€
+        
+        ---
+        
+        ### 🔊 Capteur ACOUSTIQUE (Ultrasons)
+        **Ce qu'il mesure :** Les sons et ultrasons émis par la machine
+        
+        **Pourquoi c'est important ?**
+        - Certains défauts créent des bruits avant d'être visibles
+        - Les ultrasons détectent des fuites invisibles
+        
+        **Défauts détectés :**
+        - 💨 Fuites d'air comprimé
+        - 💧 Fuites de fluides
+        - ⚡ Décharges électriques (effet couronne)
+        - 🔩 Fissures naissantes
+        
+        **Exemple concret :**
+        ```
+        Circuit d'air comprimé :
+        Niveau normal    : 35 dB
+        Petite fuite     : 45 dB → ⚠️ Perte d'énergie 500€/an
+        Fuite importante : 60 dB → 🚨 Perte 5 000€/an
+        Rupture proche   : 75 dB → 🔴 Arrêt système
+        ```
+        
+        **Prix :** 300€ - 3 000€
+        
+        ---
+        
+        ### 🎯 Tableau récapitulatif : Quel capteur pour quel problème ?
+        
+        | Problème à détecter | Capteur prioritaire | Capteur secondaire | Délai de prévision |
+        |---------------------|--------------------|--------------------|-------------------|
+        | Usure de roulement | 🌊 Vibration | 🌡️ Température | 2-8 semaines |
+        | Problème de lubrification | 🌡️ Température | 🌊 Vibration | 1-4 semaines |
+        | Surcharge mécanique | ⚡ Courant | 🌊 Vibration | 3-10 jours |
+        | Déséquilibre rotor | 🌊 Vibration | ⚡ Courant | 2-6 semaines |
+        | Fuite d'air | 🔊 Acoustique | - | Immédiat |
+        | Défaut électrique | ⚡ Courant | 🌡️ Température | 1-3 semaines |
+        
+        ---
+        
+        ### 💰 Coût d'un système de surveillance complet
+        
+        **Pour 1 machine critique :**
+        - Capteurs (×4 types) : 1 500€
+        - Installation : 800€
+        - Passerelle IoT : 600€
+        - Logiciel (abonnement/an) : 1 200€
+        - **Total 1ère année : 4 100€**
+        - **Années suivantes : 1 200€/an**
+        
+        **ROI moyen : 6-12 mois** (via économies sur pannes évitées)
+        """)
+    
+    with st.expander("📖 **Chapitre 2.2 : L'IoT Industriel - Connecter vos machines**"):
+        st.markdown("""
+        #### 🌐 Qu'est-ce que l'IoT Industriel (IIoT) ?
+        
+        **IoT = Internet of Things = Internet des Objets**
+        **IIoT = Industrial IoT = Machines industrielles connectées à Internet**
+        
+        ---
+        
+        ### 🔄 Le parcours de la donnée : Du capteur au décideur
+        
+        ```
+        MACHINE                 TRANSMISSION             ANALYSE                 ACTION
+        ───────                ─────────────            ────────               ───────
+        
+        🏭 Moteur              🛰️ Réseau               ☁️ Cloud                👨‍💼 Décision
+           │                      │                       │                       │
+           ├─ 🌊 Vibrations       │                       │                       │
+           ├─ 🌡️ Température   ──┤ WiFi/4G/LoRa      ─→ 🤖 IA Analyse       ─→ 📧 Email
+           ├─ ⚡ Courant          │                       │                       📱 SMS
+           └─ 🔊 Bruit            │                       ├─ Détection anomalie  🔧 Planification
+                                  │                       ├─ Prédiction panne
+                                  └─ Passerelle IoT      └─ Calcul durée vie
+        ```
+        
+        ---
+        
+        ### 📡 Technologies de transmission
+        
+        | Technologie | Portée | Débit | Coût | Usage industriel |
+        |-------------|--------|-------|------|------------------|
+        | **WiFi** | 50m | ⚡⚡⚡ Élevé | €€ | Ateliers, bureaux |
+        | **4G/5G** | Illimité | ⚡⚡⚡ Élevé | €€€ | Sites distants, mobilité |
+        | **LoRaWAN** | 10km | ⚡ Faible | € | Capteurs batteries, extérieur |
+        | **Ethernet** | 100m | ⚡⚡⚡ Très élevé | €€ | Machines fixes, fiabilité max |
+        | **ModBus** | 1km | ⚡⚡ Moyen | € | Standard industriel |
+        
+        ---
+        
+        ### 🏗️ Architecture d'un système IIoT
+        
+        **Niveau 1 : CAPTEURS** (Terrain)
+        - Collecte des données brutes
+        - Fréquence : 1 à 1000 mesures/seconde
+        
+        **Niveau 2 : PASSERELLE IoT** (Edge Computing)
+        - Prétraitement des données
+        - Filtrage et agrégation
+        - Premier niveau d'alerte
+        - Stockage local temporaire
+        
+        **Niveau 3 : CLOUD** (Serveurs distants)
+        - Stockage massif de données
+        - Calculs complexes d'IA
+        - Tableaux de bord
+        - Historiques longue durée
+        
+        **Niveau 4 : UTILISATEURS**
+        - 📱 Application mobile
+        - 💻 Dashboard web
+        - 📊 Rapports automatiques
+        - 🔔 Alertes personnalisées
+        
+        ---
+        
+        ### 📊 Flux de données en temps réel
+        
+        **Exemple : 10 machines surveillées**
+        
+        ```
+        Par seconde :
+        - 10 machines × 4 capteurs = 40 mesures/seconde
+        - 40 mesures × 60 secondes = 2 400 mesures/minute
+        - 2 400 × 60 minutes = 144 000 mesures/heure
+        - 144 000 × 24 heures = 3,5 millions mesures/jour
+        
+        Stockage :
+        - 1 mesure ≈ 50 octets
+        - 3,5 millions × 50 octets = 175 Mo/jour
+        - 175 Mo × 365 jours = 64 Go/an
+        ```
+        
+        💡 **Cloud nécessaire pour gérer ces volumes !**
+        
+        ---
+        
+        ### 🔒 Sécurité IIoT : Points essentiels
+        
+        #### Risques :
+        - 🚨 Cyberattaques (piratage de machines)
+        - 🔓 Vol de données de production
+        - 💥 Sabotage industriel
+        
+        #### Protections :
+        - 🔐 **Chiffrement** : Données cryptées end-to-end
+        - 🛡️ **Firewall industriel** : Isolation réseau OT/IT
+        - 🔑 **Authentification** : Accès par certificats
+        - 📝 **Traçabilité** : Logs de toutes les actions
+        - 🔄 **Mises à jour** : Patches de sécurité réguliers
+        
+        ---
+        
+        ### 💰 Coûts d'une infrastructure IIoT
+        
+        **Pour 20 machines :**
+        
+        | Composant | Prix unitaire | Quantité | Total |
+        |-----------|---------------|----------|-------|
+        | Capteurs multi-paramètres | 800€ | 20 | 16 000€ |
+        | Passerelles IoT | 1 200€ | 4 | 4 800€ |
+        | Installation | 500€ | 20 | 10 000€ |
+        | Logiciel Cloud (an) | 150€/machine | 20 | 3 000€/an |
+        | **TOTAL initial** | | | **30 800€** |
+        | **Coût annuel** | | | **3 000€** |
+        
+        **ROI :**
+        - Réduction pannes : -40% → **Économie : 50 000€/an**
+        - Retour sur investissement : **< 8 mois**
+        """)
+    
+    # ============ NIVEAU 3: AVANCÉ ============
+    st.markdown("---")
+    st.markdown("## 🔴 NIVEAU 3 : Intelligence Artificielle et Analyse")
+    
+    with st.expander("📖 **Chapitre 3.1 : Machine Learning pour la maintenance - Les algorithmes**"):
+        st.markdown("""
+        #### 🤖 Comment l'IA détecte les anomalies ?
+        
+        Le Machine Learning permet à un ordinateur **d'apprendre tout seul** à reconnaître les pannes.
+        
+        ---
+        
+        ### 📚 Les 3 types d'apprentissage
+        
+        #### 1️⃣ APPRENTISSAGE SUPERVISÉ
+        **Principe :** On montre des exemples à l'IA avec les réponses
+        
+        **Exemple :**
+        ```
+        Enseignement à l'IA :
+        
+        Exemple 1: Vibration=2mm/s, Temp=65°C → Machine SAINE ✅
+        Exemple 2: Vibration=5mm/s, Temp=85°C → Machine DÉFAILLANTE ❌
+        Exemple 3: Vibration=3mm/s, Temp=70°C → Machine ATTENTION ⚠️
+        ... (des milliers d'exemples)
+        
+        Après apprentissage, l'IA peut prédire :
+        Nouvelle mesure: Vibration=4.5mm/s, Temp=82°C
+        → Prédiction IA: Machine DÉFAILLANTE à 87% ❌
+        ```
+        
+        **Algorithmes utilisés :**
+        - 🌳 **Random Forest** (Forêt aléatoire)
+          - Précision : 85-92%
+          - Temps de calcul : Rapide
+          - Idéal pour : Classification de défauts
+          
+        - 🧠 **Neural Networks** (Réseaux de neurones)
+          - Précision : 90-97%
+          - Temps de calcul : Lent
+          - Idéal pour : Patterns complexes
+          
+        - 📐 **SVM** (Support Vector Machine)
+          - Précision : 82-89%
+          - Temps de calcul : Moyen
+          - Idéal pour : Petits datasets
+        
+        ---
+        
+        #### 2️⃣ APPRENTISSAGE NON SUPERVISÉ
+        **Principe :** L'IA trouve elle-même les anomalies sans exemples
+        
+        **Exemple :**
+        ```
+        L'IA analyse 1 an de données normales:
+        - Vibration moyenne : 2.2mm/s ± 0.4
+        - Température moyenne : 63°C ± 3
+        
+        Un jour, l'IA détecte :
+        - Vibration : 4.8mm/s → +118% de la normale ! 🚨
+        - Température : 78°C → +24% de la normale ! 🚨
+        
+        → ANOMALIE détectée automatiquement
+        ```
+        
+        **Algorithmes utilisés :**
+        - 📊 **Isolation Forest**
+          - Détecte les points aberrants
+          - Fiabilité : 80-88%
+          
+        - 🎯 **K-Means Clustering**
+          - Regroupe les comportements similaires
+          - Détecte ce qui sort des groupes
+          
+        - 🔍 **Autoencoders**
+          - Réseau de neurones spécialisé
+          - Apprend la "normalité"
+          - Précision : 88-94%
+        
+        ---
+        
+        #### 3️⃣ DEEP LEARNING (Apprentissage profond)
+        **Principe :** Réseaux de neurones très complexes, imitent le cerveau humain
+        
+        **Avantages :**
+        - 🎯 Précision exceptionnelle : 95-99%
+        - 🔮 Détecte des patterns invisibles à l'œil humain
+        - 📈 S'améliore avec plus de données
+        
+        **Inconvénients :**
+        - 💻 Très gourmand en calcul (GPU nécessaire)
+        - 📚 Besoin de milliers d'exemples
+        - ⏱️ Apprentissage long (heures à jours)
+        
+        **Architectures populaires :**
+        - **LSTM** : Pour données temporelles (vibrations dans le temps)
+        - **CNN** : Pour images (thermographie infrarouge)
+        - **Transformers** : Pour patterns complexes multi-capteurs
+        
+        ---
+        
+        ### 📊 Comparaison pratique des algorithmes
+        
+        | Algorithme | Précision | Données nécessaires | Temps calcul | Coût serveur | Cas d'usage |
+        |------------|-----------|---------------------|--------------|--------------|-------------|
+        | **Random Forest** | ⭐⭐⭐⭐ 88% | 1 000+ exemples | ⚡ Rapide | € | PME, débutants |
+        | **SVM** | ⭐⭐⭐ 85% | 500+ exemples | ⚡⚡ Moyen | € | Classification binaire |
+        | **Isolation Forest** | ⭐⭐⭐ 83% | 500+ exemples | ⚡ Rapide | € | Détection anomalies |
+        | **Neural Networks** | ⭐⭐⭐⭐⭐ 94% | 5 000+ exemples | ⚡⚡⚡ Lent | €€ | Patterns complexes |
+        | **LSTM** | ⭐⭐⭐⭐⭐ 96% | 10 000+ exemples | ⚡⚡⚡ Très lent | €€€ | Séries temporelles |
+        
+        ---
+        
+        ### 🔬 Exemple concret : Prédiction de panne de roulement
+        
+        **Dataset :**
+        - 1 an de surveillance
+        - 3 roulements tombés en panne (avec données avant-panne)
+        - 50 roulements sains
+        - 4 capteurs × 10 mesures/min = 2,1 millions de mesures
+        
+        **Étapes de l'IA :**
+        
+        ```
+        1. PRÉPARATION DES DONNÉES (1 semaine)
+           - Nettoyage (suppression valeurs aberrantes)
+           - Normalisation (mise à l'échelle 0-1)
+           - Feature engineering (calcul de moyennes, écarts-types)
+        
+        2. APPRENTISSAGE (2 jours sur GPU)
+           - Random Forest : 10 000 arbres
 
 # RESSOURCES
 elif section == "📖 Ressources":
@@ -483,3 +987,4 @@ elif section == "ℹ️ À propos":
         et accessible.
 
         """)
+

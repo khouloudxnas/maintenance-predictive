@@ -223,6 +223,47 @@ elif section == "📚 Théorie":
             """)
         
         st.markdown("🔗 [Guide complet sur les KPI Maintenance](https://www.maintenance.org/indicateurs-KPI)")
+# RESSOURCES
+elif section == "📖 Ressources":
+    st.title("📖 Ressources & Liens Utiles")
+    
+    tab1, tab2, tab3 = st.tabs(["🎓 Cours en ligne", "🎬 Vidéos", "📄 Articles"])
+    
+    with tab1:
+        st.markdown("### Formations complètes")
+        
+        col1, col2 = st.columns(2)
+        with col1:
+            st.markdown("""
+            #### 🎓 Coursera
+            Formation complète sur la maintenance prédictive avec certificat.
+            
+            [Accéder au cours →](https://www.coursera.org/learn/predictive-maintenance)
+            """)
+        
+        with col2:
+            st.markdown("""
+            #### 🎓 Udemy
+            Multiples cours sur la maintenance prédictive, du débutant à l'expert.
+            
+            [Voir les cours →](https://www.udemy.com/topic/predictive-maintenance/)
+            """)
+    
+    with tab2:
+        st.markdown("### Tutoriels vidéo")
+        st.markdown("""
+        - 🎬 [Introduction à la Maintenance Prédictive](https://www.youtube.com/watch?v=example1)
+        - 🎬 [Maintenance Prédictive et IoT](https://www.youtube.com/watch?v=example2)
+        - 🎬 [Analyse des vibrations en pratique](https://www.youtube.com/watch?v=example3)
+        """)
+    
+    with tab3:
+        st.markdown("### Documentation et recherche")
+        st.markdown("""
+        - 📄 [Maintenance.org - Articles spécialisés](https://www.maintenance.org/)
+        - 📄 [IEEE - Publications scientifiques](https://ieeexplore.ieee.org/Xplore/home.jsp)
+        - 📄 [Guides pratiques et cas d'études](https://www.maintenance.org/guides)
+        """)
 
 
 # EXERCICES
@@ -443,6 +484,7 @@ elif section == "ℹ️ À propos":
         et accessible.
 
         """)
+
 
 
 

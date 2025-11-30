@@ -742,7 +742,7 @@ elif section == "📖 Ressources":
             #### 🎓 Coursera
             Formation complète sur la maintenance prédictive avec certificat.
             
-            [Accéder au cours →](https://www.coursera.org/learn/predictive-maintenance)
+            [Accéder au cours ](https://www.coursera.org/learn/predictive-maintenance)
             """)
         
         with col2:
@@ -987,4 +987,5 @@ elif section == "ℹ️ À propos":
         et accessible.
 
         """)
+
 

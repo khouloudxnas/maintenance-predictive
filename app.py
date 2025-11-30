@@ -127,6 +127,104 @@ if section == "🏠 Accueil":
             st.write("Découvrez les objectifs du projet et les fonctionnalités principales.")
 
 
+# THÉORIE
+elif section == "📚 Théorie":
+    st.title("📚 Théorie & Concepts")
+    
+    st.markdown("### Explorez les concepts clés de la maintenance prédictive")
+    
+    with st.expander("🎯 **Introduction à la Maintenance Prédictive** - Qu'est-ce que c'est ?", expanded=True):
+        st.markdown("""
+        #### Qu'est-ce que la maintenance prédictive ?
+        
+        La maintenance prédictive vise à **prévoir les défaillances** d'une machine avant qu'elles ne surviennent.
+        
+        **Avantages clés :**
+        - ✅ Réduction des coûts de maintenance
+        - ✅ Amélioration de la disponibilité des équipements
+        - ✅ Augmentation de la sécurité des installations
+        - ✅ Optimisation de la planification
+        """)
+        st.markdown("🔗 [En savoir plus sur Wikipedia](https://fr.wikipedia.org/wiki/Maintenance_prédictive)")
+    
+    with st.expander("🔄 **Types de maintenance** - Corrective, Préventive, Prédictive"):
+        col1, col2, col3 = st.columns(3)
+        
+        with col1:
+            st.markdown("#### 🔴 Corrective")
+            st.write("Intervention **après panne**")
+            st.write("⚠️ Coûteux et imprévisible")
+        
+        with col2:
+            st.markdown("#### 🟡 Préventive")
+            st.write("Planifiée selon un **calendrier**")
+            st.write("📅 Régulière mais parfois inutile")
+        
+        with col3:
+            st.markdown("#### 🟢 Prédictive")
+            st.write("Basée sur l'**analyse des données**")
+            st.write("📊 Optimale et économique")
+        
+        st.markdown("---")
+        st.markdown("🔗 [Article sur les types de maintenance](https://www.maintenance.org/types-de-maintenance)")
+    
+    with st.expander("📡 **Capteurs et mesures** - Les technologies de surveillance"):
+        st.markdown("#### Les principaux capteurs utilisés :")
+        
+        sensors_data = {
+            "Capteur": ["🌊 Vibration", "🌡️ Température", "⚡ Courant électrique", "🔊 Acoustique"],
+            "Détecte": ["Déséquilibres, usure des roulements", "Surchauffe, friction", "Anomalies moteurs", "Fissures, fuites"],
+            "Criticité": ["Élevée", "Moyenne", "Élevée", "Moyenne"]
+        }
+        
+        df_sensors = pd.DataFrame(sensors_data)
+        st.dataframe(df_sensors, use_container_width=True)
+    
+    with st.expander("🔬 **Méthodes d'analyse** - Comment analyser les données ?"):
+        st.markdown("""
+        #### Approches principales :
+        
+        1. **📊 Analyse statistique** : Étude des tendances et patterns historiques
+        2. **🤖 Machine Learning** : Détection automatique des anomalies
+        3. **📈 Analyse spectrale** : Analyse fréquentielle des vibrations
+        4. **🌐 IoT** : Collecte et traitement des données en temps réel
+        """)
+        st.markdown("🔗 [Tutoriel Machine Learning Maintenance](https://www.coursera.org/learn/predictive-maintenance)")
+    
+    with st.expander("📊 **Indicateurs clés (KPI)** - Mesurer la performance"):
+        st.markdown("#### Les KPI essentiels en maintenance :")
+        
+        col1, col2 = st.columns(2)
+        
+        with col1:
+            st.markdown("""
+            **⏱️ MTBF** (Mean Time Between Failures)
+            - Temps moyen entre pannes
+            - Mesure la fiabilité
+            """)
+            
+            st.markdown("""
+            **🔧 MTTR** (Mean Time To Repair)
+            - Temps moyen de réparation
+            - Mesure l'efficacité de maintenance
+            """)
+        
+        with col2:
+            st.markdown("""
+            **✅ Disponibilité**
+            - Proportion de temps opérationnel
+            - Objectif : > 95%
+            """)
+            
+            st.markdown("""
+            **💯 Fiabilité**
+            - Probabilité de bon fonctionnement
+            - Essentielle pour la planification
+            """)
+        
+        st.markdown("🔗 [Guide complet sur les KPI Maintenance](https://www.maintenance.org/indicateurs-KPI)")
+
+
 # EXERCICES
 elif section == "✏️ Exercices":
     st.title("✏️ Exercices et Cas Pratiques")
@@ -345,6 +443,7 @@ elif section == "ℹ️ À propos":
         et accessible.
 
         """)
+
 
 
 

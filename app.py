@@ -92,7 +92,7 @@ if section == "🏠 Accueil":
     with col1:
         st.metric("📊 Concepts", "5+", "Théoriques")
     with col2:
-        st.metric("✏️ Exercices", "5", "Pratiques")
+        st.metric("✏️ Exercices", "7", "Pratiques")
     with col3:
         st.metric("🔗 Ressources", "10+", "Liens utiles")
     
@@ -977,6 +977,7 @@ elif section == "ℹ️ À propos":
         et accessible.
 
         """)
+
 
 
 

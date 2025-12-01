@@ -953,7 +953,7 @@ elif section == "ℹ️ À propos":
             "Concepts expliqués avec exemples",
             "7 exercices avec correction automatique",
             "Visualisations Plotly interactives",
-            "Cours, vidéos et articles sélectionnés"
+            "PDF, vidéos et datasets"
         ]
         
     }
@@ -977,6 +977,7 @@ elif section == "ℹ️ À propos":
         et accessible.
 
         """)
+
 
 
 

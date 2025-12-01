@@ -939,59 +939,316 @@ elif section == "✏️ Exercices":
 
 
 # ===================== UPLOAD & ANALYSE =====================
+# ===================== UPLOAD & ANALYSE =====================
 elif section == "📈 Upload & Analyse":
-    st.title("📤 Upload de vos données et modèle")
+    st.title("📈 Upload & Analyse de Données")
+    st.markdown("### Importez votre dataset et votre modèle pour analyser vos données de maintenance")
     
-    st.markdown("""
-    Téléversez votre dataset et votre modèle entraîné pour analyser vos données,
-    calculer les KPI (MTBF, MTTR, Disponibilité), prédire le RUL, et visualiser les mesures.
-    """)
-
-    # Upload du dataset
-    uploaded_file = st.file_uploader("📄 Téléversez votre dataset CSV", type=["csv"])
-    if uploaded_file is not None:
-        df = pd.read_csv(uploaded_file)
-        st.success("✅ Dataset chargé avec succès !")
-        st.dataframe(df.head(), use_container_width=True)
+    tab1, tab2, tab3 = st.tabs(["📊 Upload Dataset", "🤖 Upload Modèle", "📈 Analyse & Résultats"])
+    
+    # ==================== TAB 1 : Upload Dataset ====================
+    with tab1:
+        st.markdown("### 📊 Importez vos données")
         
-        # Graphiques interactifs
-        st.markdown("### 📊 Visualisation des données")
-        for col in df.columns:
-            if df[col].dtype in ['int64', 'float64']:
-                fig = px.line(df, y=col, title=f"Évolution de {col}")
-                st.plotly_chart(fig, use_container_width=True)
-
-    # Upload du modèle entraîné
-    uploaded_model = st.file_uploader("🤖 Téléversez votre modèle (.pkl)", type=["pkl"])
-    if uploaded_model is not None:
-        st.success("✅ Modèle chargé avec succès !")
-        model = joblib.load(uploaded_model)
+        uploaded_file = st.file_uploader(
+            "Choisissez un fichier CSV",
+            type=['csv'],
+            help="Fichier CSV contenant les données des capteurs (vibration, température, courant, etc.)",
+            key="dataset_upload"
+        )
         
         if uploaded_file is not None:
-            st.markdown("### 🔮 Prédiction du RUL avec votre modèle")
-            X = df.select_dtypes(include=[np.number])  # Exemple : toutes les colonnes numériques
-            predictions = model.predict(X)
-            df['RUL_prédit'] = predictions
-            st.dataframe(df.head(), use_container_width=True)
+            try:
+                df = pd.read_csv(uploaded_file)
+                st.success(f"✅ Fichier chargé avec succès ! ({len(df)} lignes, {len(df.columns)} colonnes)")
+                
+                # Aperçu des données
+                st.markdown("#### 🔍 Aperçu des données")
+                st.dataframe(df.head(10), use_container_width=True)
+                
+                # Informations sur le dataset
+                col1, col2, col3, col4 = st.columns(4)
+                with col1:
+                    st.metric("📊 Lignes", len(df))
+                with col2:
+                    st.metric("📋 Colonnes", len(df.columns))
+                with col3:
+                    st.metric("❌ Valeurs manquantes", df.isnull().sum().sum())
+                with col4:
+                    st.metric("💾 Taille", f"{uploaded_file.size / 1024:.1f} KB")
+                
+                # Statistiques descriptives
+                with st.expander("📊 Statistiques descriptives"):
+                    st.dataframe(df.describe(), use_container_width=True)
+                
+                # Stocker dans session_state
+                st.session_state['dataset'] = df
+                st.session_state['dataset_loaded'] = True
+                
+            except Exception as e:
+                st.error(f"❌ Erreur lors du chargement du fichier : {str(e)}")
+        else:
+            st.info("👆 Veuillez importer un fichier CSV pour commencer l'analyse")
+    
+    # ==================== TAB 2 : Upload Modèle ====================
+    with tab2:
+        st.markdown("### 🤖 Importez votre modèle entraîné")
+        
+        uploaded_model = st.file_uploader(
+            "Choisissez un fichier modèle (.pkl, .h5, .joblib)",
+            type=['pkl', 'h5', 'joblib'],
+            help="Modèle entraîné pour la prédiction de RUL ou détection d'anomalies",
+            key="model_upload"
+        )
+        
+        if uploaded_model is not None:
+            try:
+                import pickle
+                import joblib
+                
+                # Charger le modèle selon l'extension
+                if uploaded_model.name.endswith('.pkl'):
+                    model = pickle.load(uploaded_model)
+                elif uploaded_model.name.endswith('.joblib'):
+                    model = joblib.load(uploaded_model)
+                elif uploaded_model.name.endswith('.h5'):
+                    st.warning("⚠️ Pour les modèles .h5, TensorFlow/Keras doit être installé")
+                    # from tensorflow import keras
+                    # model = keras.models.load_model(uploaded_model)
+                
+                st.success(f"✅ Modèle chargé avec succès : {uploaded_model.name}")
+                st.info(f"📦 Type de modèle : {type(model).__name__}")
+                
+                # Stocker dans session_state
+                st.session_state['model'] = model
+                st.session_state['model_loaded'] = True
+                
+            except Exception as e:
+                st.error(f"❌ Erreur lors du chargement du modèle : {str(e)}")
+        else:
+            st.info("👆 Veuillez importer un modèle pour effectuer des prédictions")
+    
+    # ==================== TAB 3 : Analyse & Résultats ====================
+    with tab3:
+        st.markdown("### 📈 Analyse des données et prédictions")
+        
+        # Vérifier si dataset et modèle sont chargés
+        if 'dataset_loaded' not in st.session_state or not st.session_state['dataset_loaded']:
+            st.warning("⚠️ Veuillez d'abord charger un dataset dans l'onglet 'Upload Dataset'")
+            st.stop()
+        
+        df = st.session_state['dataset']
+        
+        # ========== VISUALISATION DES DONNÉES ==========
+        st.markdown("#### 📊 Visualisation des données")
+        
+        # Sélection des colonnes à visualiser
+        numeric_cols = df.select_dtypes(include=[np.number]).columns.tolist()
+        
+        if len(numeric_cols) > 0:
+            col1, col2 = st.columns(2)
             
-            # KPI simples
-            st.markdown("### ⚙️ Calcul des KPI")
-            nb_pannes = (df['RUL_prédit'] <= 0).sum()
-            temps_fonctionnement = len(df)
-            temps_reparation = 5 * nb_pannes  # Exemple
-            mtbf = temps_fonctionnement / max(nb_pannes, 1)
-            mttr = temps_reparation / max(nb_pannes, 1)
-            dispo = mtbf / (mtbf + mttr) * 100
+            with col1:
+                selected_feature = st.selectbox(
+                    "Sélectionnez une variable à visualiser",
+                    options=numeric_cols,
+                    key="viz_feature"
+                )
             
-            st.markdown(f"- **MTBF** = {mtbf:.2f}")
-            st.markdown(f"- **MTTR** = {mttr:.2f}")
-            st.markdown(f"- **Disponibilité** = {dispo:.2f}%")
-    
+            with col2:
+                chart_type = st.selectbox(
+                    "Type de graphique",
+                    options=["Ligne", "Histogramme", "Box Plot"],
+                    key="chart_type"
+                )
+            
+            # Créer le graphique
+            if chart_type == "Ligne":
+                fig = px.line(
+                    df,
+                    y=selected_feature,
+                    title=f"Évolution de {selected_feature}",
+                    labels={'index': 'Index', selected_feature: selected_feature}
+                )
+            elif chart_type == "Histogramme":
+                fig = px.histogram(
+                    df,
+                    x=selected_feature,
+                    title=f"Distribution de {selected_feature}",
+                    nbins=30
+                )
+            else:  # Box Plot
+                fig = px.box(
+                    df,
+                    y=selected_feature,
+                    title=f"Box Plot de {selected_feature}"
+                )
+            
+            fig.update_layout(height=400)
+            st.plotly_chart(fig, use_container_width=True)
         
+        # ========== CALCUL DES KPIs ==========
+        st.markdown("#### 📊 Calcul des KPIs de Maintenance")
         
-    
+        col1, col2 = st.columns(2)
         
-    
+        with col1:
+            st.markdown("##### Paramètres pour calcul MTBF/MTTR")
+            nb_pannes = st.number_input("Nombre de pannes", min_value=1, value=5, step=1)
+            temps_fonctionnement = st.number_input("Temps total de fonctionnement (h)", min_value=1, value=500, step=10)
+            temps_reparation = st.number_input("Temps total de réparation (h)", min_value=0, value=25, step=1)
+        
+        with col2:
+            if st.button("🔢 Calculer les KPIs", type="primary"):
+                # Calculs
+                mtbf = temps_fonctionnement / nb_pannes
+                mttr = temps_reparation / nb_pannes
+                disponibilite = (mtbf / (mtbf + mttr)) * 100
+                
+                # Affichage des résultats
+                st.markdown("##### ✅ Résultats")
+                col_a, col_b, col_c = st.columns(3)
+                
+                with col_a:
+                    st.metric("⏱️ MTBF", f"{mtbf:.1f} h")
+                with col_b:
+                    st.metric("🔧 MTTR", f"{mttr:.1f} h")
+                with col_c:
+                    st.metric("⚙️ Disponibilité", f"{disponibilite:.1f} %")
+                
+                # Stocker dans session_state
+                st.session_state['kpis'] = {
+                    'mtbf': mtbf,
+                    'mttr': mttr,
+                    'disponibilite': disponibilite
+                }
+        
+        st.markdown("---")
+        
+        # ========== PRÉDICTION RUL ==========
+        st.markdown("#### 🔮 Prédiction du RUL (Remaining Useful Life)")
+        
+        if 'model_loaded' in st.session_state and st.session_state['model_loaded']:
+            model = st.session_state['model']
+            
+            st.info("💡 Assurez-vous que vos données sont prétraitées de la même manière que lors de l'entraînement du modèle")
+            
+            if st.button("🚀 Lancer la prédiction RUL", type="primary"):
+                try:
+                    # Prédiction (adapter selon votre modèle)
+                    # Exemple simplifié : prédire sur tout le dataset
+                    predictions = model.predict(df[numeric_cols])
+                    
+                    # Ajouter les prédictions au DataFrame
+                    df['RUL_Predicted'] = predictions
+                    
+                    st.success("✅ Prédictions effectuées avec succès !")
+                    
+                    # Affichage des résultats
+                    col1, col2 = st.columns(2)
+                    
+                    with col1:
+                        st.metric("📊 RUL Moyen", f"{predictions.mean():.2f}")
+                        st.metric("📉 RUL Min", f"{predictions.min():.2f}")
+                    
+                    with col2:
+                        st.metric("📈 RUL Max", f"{predictions.max():.2f}")
+                        st.metric("📊 Écart-type", f"{predictions.std():.2f}")
+                    
+                    # Graphique des prédictions
+                    fig = px.line(
+                        df,
+                        y='RUL_Predicted',
+                        title="Évolution du RUL Prédit",
+                        labels={'index': 'Index', 'RUL_Predicted': 'RUL (cycles)'}
+                    )
+                    fig.update_layout(height=400)
+                    st.plotly_chart(fig, use_container_width=True)
+                    
+                    # Téléchargement des résultats
+                    csv = df.to_csv(index=False).encode('utf-8')
+                    st.download_button(
+                        label="📥 Télécharger les résultats (CSV)",
+                        data=csv,
+                        file_name="predictions_RUL.csv",
+                        mime="text/csv"
+                    )
+                    
+                except Exception as e:
+                    st.error(f"❌ Erreur lors de la prédiction : {str(e)}")
+                    st.info("💡 Vérifiez que les colonnes du dataset correspondent aux features attendues par le modèle")
+        else:
+            st.warning("⚠️ Veuillez d'abord charger un modèle dans l'onglet 'Upload Modèle'")
+        
+        # ========== DÉTECTION D'ANOMALIES ==========
+        st.markdown("---")
+        st.markdown("#### 🚨 Détection d'Anomalies")
+        
+        if len(numeric_cols) > 0:
+            anomaly_feature = st.selectbox(
+                "Sélectionnez la variable pour détecter les anomalies",
+                options=numeric_cols,
+                key="anomaly_feature"
+            )
+            
+            threshold = st.slider(
+                "Définir le seuil (écart-type)",
+                min_value=1.0,
+                max_value=5.0,
+                value=3.0,
+                step=0.1
+            )
+            
+            if st.button("🔍 Détecter les anomalies", type="primary"):
+                # Calcul des anomalies basé sur l'écart-type
+                mean = df[anomaly_feature].mean()
+                std = df[anomaly_feature].std()
+                
+                df['Anomaly'] = (df[anomaly_feature] > mean + threshold * std) | \
+                                (df[anomaly_feature] < mean - threshold * std)
+                
+                nb_anomalies = df['Anomaly'].sum()
+                
+                st.metric("🚨 Nombre d'anomalies détectées", nb_anomalies)
+                
+                # Visualisation
+                fig = go.Figure()
+                
+                # Points normaux
+                fig.add_trace(go.Scatter(
+                    x=df[~df['Anomaly']].index,
+                    y=df[~df['Anomaly']][anomaly_feature],
+                    mode='markers',
+                    name='Normal',
+                    marker=dict(color='blue', size=5)
+                ))
+                
+                # Points anomalies
+                fig.add_trace(go.Scatter(
+                    x=df[df['Anomaly']].index,
+                    y=df[df['Anomaly']][anomaly_feature],
+                    mode='markers',
+                    name='Anomalie',
+                    marker=dict(color='red', size=8, symbol='x')
+                ))
+                
+                # Lignes de seuil
+                fig.add_hline(y=mean + threshold * std, line_dash="dash", line_color="red", annotation_text="Seuil haut")
+                fig.add_hline(y=mean - threshold * std, line_dash="dash", line_color="red", annotation_text="Seuil bas")
+                
+                fig.update_layout(
+                    title=f"Détection d'anomalies - {anomaly_feature}",
+                    xaxis_title="Index",
+                    yaxis_title=anomaly_feature,
+                    height=400
+                )
+                
+                st.plotly_chart(fig, use_container_width=True)
+                
+                # Afficher les anomalies
+                if nb_anomalies > 0:
+                    with st.expander("📋 Détails des anomalies détectées"):
+                        st.dataframe(df[df['Anomaly']], use_container_width=True)
 # À PROPOS
 elif section == "ℹ️ À propos":
     st.title("ℹ️ À propos du Portfolio")
@@ -1058,6 +1315,7 @@ elif section == "ℹ️ À propos":
         et accessible.
 
         """)
+
 
 
 

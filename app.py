@@ -609,7 +609,7 @@ elif section == "📖 Ressources":
         with col1:
             st.markdown("""
             #### 🎓 Mathworks
-            Formation complète sur la maintenance prédictive avec certificat.
+            
             
             [Introduction à la maintenance prédictive →](https://fr.mathworks.com/discovery/predictive-maintenance.html)
             [Série de vidéos sur la maintenance prédictive →](https://fr.mathworks.com/videos/series/predictive-maintenance-tech-talk-series.html)
@@ -623,7 +623,7 @@ elif section == "📖 Ressources":
         with col2:
             st.markdown("""
             #### 🎓 Udemy
-            Multiples cours sur la maintenance prédictive, du débutant à l'expert.
+       
             
             - [predictive-maintenance →](https://www.udemy.com/course/master-in-predictive-maintenance/)
             - [preventive-maintenance-basics →](https://www.udemy.com/course/preventive-maintenance-basics/)
@@ -965,6 +965,7 @@ elif section == "ℹ️ À propos":
         et accessible.
 
         """)
+
 
 
 

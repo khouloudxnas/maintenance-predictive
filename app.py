@@ -483,7 +483,7 @@ elif section == "📚 Théorie":
 
 
     # -------------------- NIVEAU 7 --------------------
-with st.expander("🟦 Niveau 7 — Workflow réel en usine", expanded=True):
+    with st.expander("🟦 Niveau 7 — Workflow réel en usine", expanded=True):
         st.markdown("## 🟦 Niveau 7 — Workflow complet d’un projet de maintenance prédictive en usine")
     
         st.markdown("""
@@ -857,6 +857,7 @@ elif section == "ℹ️ À propos":
         et accessible.
 
         """)
+
 
 
 

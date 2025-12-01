@@ -1009,8 +1009,8 @@ elif section == "📈 Upload & Analyse":
                     model = joblib.load(uploaded_model)
                 elif ext == "h5":
                     st.warning("⚠️ TensorFlow doit être installé pour charger un modèle .h5")
-                    # from tensorflow import keras
-                    # model = keras.models.load_model(uploaded_model)
+                    from tensorflow import keras
+                     model = keras.models.load_model(uploaded_model)
                 else:
                     st.error("❌ Format non supporté")
                     st.stop()
@@ -1217,6 +1217,7 @@ elif section == "ℹ️ À propos":
         et accessible.
 
         """)
+
 
 
 

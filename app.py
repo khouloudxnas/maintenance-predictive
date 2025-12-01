@@ -825,7 +825,7 @@ elif section == "✏️ Exercices":
                 else:
                     st.error("❌ Aucun paramètre critique n'est dépassé.")
     # ===================== Niveau 6 =====================
-    with st.expander("🛠️ Exercice 6 : Problème complet — Analyse IoT d'une machine"):
+    with st.expander("🛠️ Problème complet — Analyse IoT d'une machine"):
         st.markdown("#### Contexte :")
         st.markdown("""
         Une usine a mis en place un système IoT sur une ligne de production.  
@@ -957,6 +957,7 @@ elif section == "ℹ️ À propos":
         et accessible.
 
         """)
+
 
 
 

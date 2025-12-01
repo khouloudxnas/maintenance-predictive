@@ -760,7 +760,8 @@ elif section == "✏️ Exercices":
     with st.expander("🟪 Niveau 5 — Prédiction de panne"):
         st.markdown("#### Exercice 1 : Vérification seuils")
         st.markdown("vibration, temperature, courant = 7, 78, 5")
-        st.markdown("prediction = st.radio("La machine va-t-elle tomber en panne ?", ("Oui","Non"), key="n5_1")")
+        st.markdown("""prediction = st.radio("La machine va-t-elle tomber en panne ?", ("Oui","Non"), key="n5_1")""")
+
         if st.button("Vérifier Exercice 1 (N5)", key="btn_n5_1"):
             if prediction=="Oui":
                 st.success("✅ Correct !")
@@ -843,6 +844,7 @@ elif section == "ℹ️ À propos":
         et accessible.
 
         """)
+
 
 
 

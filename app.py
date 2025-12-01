@@ -71,7 +71,7 @@ st.sidebar.markdown("# 🔧 Navigation")
 st.sidebar.markdown("---")
 section = st.sidebar.radio(
     "",
-    ["🏠 Accueil", "📚 Théorie", "📖 Ressources", "✏️ Exercices", 📈 Maintenance Prédictive : Upload & Analyse, "ℹ️ À propos"],
+    ["🏠 Accueil", "📚 Théorie", "📖 Ressources", "✏️ Exercices", "📈 Maintenance Prédictive : Upload & Analyse", "ℹ️ À propos"],
     label_visibility="collapsed"
 )
 
@@ -1057,6 +1057,7 @@ elif section == "ℹ️ À propos":
         et accessible.
 
         """)
+
 
 
 

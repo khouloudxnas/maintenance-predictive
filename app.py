@@ -325,121 +325,274 @@ elif section == "📚 Théorie":
 
 
     # -------------------- NIVEAU 3 --------------------
-    with st.expander("🟧 Niveau 3 — Analyse de données (Data Analysis)"):
+    with st.expander("🟧 Niveau 3 — Analyse de données (Data Analysis)", expanded=True):
         st.markdown("## 🟧 Niveau 3 — Analyse des données")
+    
         st.markdown("""
-        Pour exploiter les mesures, il faut analyser les signaux :
-
-        ### Méthodes :
-        - 📊 Statistiques : moyenne, variance, tendance  
-        - 🔺 Détection de pics : anomalies brutales  
-        - 📈 Courbes temporelles : évolution dans le temps  
-        - 🎧 Analyse vibratoire : signatures de roulements  
-        - 📉 FFT (spectre) : fréquences de défaillances
-
-        ### Objectif :
-        Transformer les signaux → en informations → en décisions.
+        Pour exploiter pleinement les mesures des capteurs, il est essentiel de **transformer les signaux bruts en informations utiles**.
+    
+        ---
+    
+        ### Méthodes principales
+    
+        - 📊 **Statistiques**
+          - Calcul de la moyenne, variance, tendances
+          - Permet de comprendre le comportement normal des machines
+    
+        - 🔺 **Détection de pics**
+          - Identifier les anomalies soudaines ou événements inhabituels
+          - Exemple : un pic de vibration indiquant un roulement qui se détériore
+    
+        - 📈 **Courbes temporelles**
+          - Visualiser l’évolution des mesures dans le temps
+          - Identifier les patterns et cycles de dégradation
+    
+        - 🎧 **Analyse vibratoire**
+          - Étude des signatures vibratoires des composants
+          - Détection des déséquilibres ou des pièces usées
+    
+        - 📉 **FFT / Analyse fréquentielle**
+          - Convertit le signal temporel en spectre de fréquence
+          - Permet de repérer des fréquences caractéristiques de défaillance
+    
+        ---
+    
+        ### Objectif
+        Transformer les **signaux bruts → en informations → puis en décisions** pour la maintenance.
         """)
-        st.info("🧠 La data analysis est la base avant de faire du Machine Learning.")
+    
+        st.info("🧠 La Data Analysis est indispensable avant d'appliquer du Machine Learning.")
+
 
     # -------------------- NIVEAU 4 --------------------
-    with st.expander("🟥 Niveau 4 — Machine Learning & IA"):
-        st.markdown("## 🟥 Niveau 4 — Machine Learning pour la maintenance")
+    with st.expander("🟥 Niveau 4 — Machine Learning & IA", expanded=True):
+        st.markdown("## 🟥 Niveau 4 — Machine Learning pour la maintenance prédictive")
+    
         st.markdown("""
-        Les algorithmes apprennent à reconnaître les pannes.
-
-        ### Méthodes ML :
-        1️⃣ **Régression** → prédire une valeur future  
-        2️⃣ **Classification** → normal vs anormal  
-        3️⃣ **Clustering** → grouper comportements inconnus  
-        4️⃣ **Détection d’anomalies** → repérer pannes rares  
-
-        ### Workflow ML :
-        - collecte  
-        - nettoyage  
-        - features  
-        - entraînement  
-        - test  
-        - déploiement  
+        La **maintenance prédictive moderne** utilise le Machine Learning (ML) pour **anticiper les pannes**.  
+        Les algorithmes apprennent à reconnaître les comportements normaux et à détecter les anomalies.
+    
+        ---
+    
+        ### Méthodes ML principales
+    
+        1️⃣ **Régression**
+           - Prédire des valeurs continues (ex. température future, usure d’un roulement)
+           - Exemple : prévoir si un moteur va dépasser une limite critique
+    
+        2️⃣ **Classification**
+           - Déterminer l’état de la machine : normal / anomalie
+           - Exemple : classifier un signal vibratoire comme sain ou défectueux
+    
+        3️⃣ **Clustering**
+           - Regrouper des comportements inconnus ou similaires
+           - Exemple : identifier des modes de fonctionnement inhabituels
+    
+        4️⃣ **Détection d’anomalies**
+           - Repérer des pannes rares ou inédites
+           - Exemple : alerte automatique pour une vibration jamais vue auparavant
+    
+        ---
+    
+        ### Workflow typique d’un projet ML
+        1. **Collecte des données** des capteurs  
+        2. **Nettoyage** et prétraitement  
+        3. **Feature engineering** (extraction de caractéristiques pertinentes)  
+        4. **Entraînement du modèle** sur données historiques  
+        5. **Test et validation**  
+        6. **Déploiement** pour la détection en temps réel
+    
         """)
+    
+        st.info("🤖 Le Machine Learning permet de transformer les données brutes en décisions intelligentes et actions préventives.")
+
 
     # -------------------- NIVEAU 5 --------------------
-    with st.expander("🟪 Niveau 5 — Modèles avancés (Deep Learning)"):
-        st.markdown("## 🟪 Niveau 5 — Deep Learning")
+    with st.expander("🟪 Niveau 5 — Modèles avancés (Deep Learning)", expanded=True):
+        st.markdown("## 🟪 Niveau 5 — Deep Learning pour la maintenance prédictive")
+    
         st.markdown("""
-        Pour signaux complexes :
-
-        - **CNN** → images, spectrogrammes vibratoires  
-        - **LSTM / GRU** → séries temporelles longues  
-        - **Auto-encoders** → détection d’anomalies sans labels  
-
-        Avantage : très puissant  
-        Inconvénient : demande beaucoup de données
+        Quand les signaux deviennent complexes ou volumineux, le **Deep Learning (DL)** est idéal.  
+        Il peut apprendre des patterns très subtils que le ML classique ne détecte pas.
+    
+        ---
+    
+        ### Modèles DL courants
+    
+        - **CNN (Convolutional Neural Networks)**
+          - Utilisés pour les **images et spectrogrammes vibratoires**
+          - Exemple : analyser la signature vibratoire d’un moteur
+    
+        - **LSTM / GRU (Long Short-Term Memory / Gated Recurrent Unit)**
+          - Séries temporelles longues
+          - Exemple : prédire la température ou la vibration sur plusieurs jours
+    
+        - **Auto-encoders**
+          - Détection d’anomalies sans étiquettes (non-supervisé)
+          - Exemple : repérer un comportement jamais observé dans les données
+    
+        ---
+    
+        ### Avantages et limites
+        - ✅ Très puissant pour des signaux complexes
+        - ✅ Capable de détecter des anomalies subtiles
+        - ❌ Besoin de **grandes quantités de données**
+        - ❌ Plus coûteux en calcul
+    
         """)
-        st.info("🌟 À utiliser pour vibrations complexes ou très grandes installations.")
+    
+        st.info("🌟 Astuce : utiliser DL uniquement pour des signaux complexes ou de très grandes installations industrielles.")
+
 
     # -------------------- NIVEAU 6 --------------------
-    with st.expander("🟫 Niveau 6 — Architecture IoT"):
-        st.markdown("## 🟫 Niveau 6 — Architecture IoT complète")
+    with st.expander("🟫 Niveau 6 — Architecture IoT", expanded=True):
+        st.markdown("## 🟫 Niveau 6 — Architecture IoT complète pour la maintenance prédictive")
+    
         st.markdown("""
-        Un système complet comprend :
-
-        ### 1) 📡 Capteurs  
-        → acquisition des signaux
-
-        ### 2) 🧠 Edge computing (Raspberry Pi / MCU)  
-        → filtrage, prétraitement, mini-modèles
-
-        ### 3) ☁️ Cloud (AWS, Azure, GCP)  
-        → stockage, analyse, entraînement IA
-
-        ### 4) 📊 Dashboard  
-        → interface utilisateur : Power BI, Grafana, Streamlit
+        Une installation de maintenance prédictive moderne repose sur une **architecture IoT**.  
+        Chaque composant a un rôle clé pour collecter, traiter et analyser les données en temps réel.
+    
+        ---
+    
+        ### 1) 📡 Capteurs
+        - Capturent les signaux physiques : vibration, température, courant, acoustique, pression…
+        - Qualité et fréquence d’échantillonnage cruciales pour de bonnes prédictions
+        - Exemples : accéléromètres, thermocouples, capteurs de courant, microphones
+    
+        ### 2) 🧠 Edge Computing (Raspberry Pi / Microcontrôleur)
+        - Prétraitement des données à proximité de la machine
+        - Nettoyage, filtrage, réduction du bruit
+        - Exécution de mini-modèles ML pour détection rapide d’anomalies
+        - Réduit la latence et la charge réseau
+    
+        ### 3) ☁️ Cloud (AWS, Azure, GCP)
+        - Stockage centralisé de grandes quantités de données
+        - Entraînement de modèles ML/DL complexes
+        - Analyse globale et corrélation entre machines et sites
+        - Facilite l’accès aux historiques et aux KPI
+    
+        ### 4) 📊 Dashboard (Power BI, Grafana, Streamlit)
+        - Visualisation des données en temps réel
+        - Suivi des indicateurs clés : MTBF, MTTR, disponibilité, anomalies
+        - Alertes et recommandations pour la maintenance proactive
+    
+        ---
+    
+        💡 **Astuce :** Prétraiter les données en edge permet de réduire le trafic réseau et la latence, tout en détectant rapidement les anomalies.
         """)
-        st.info("💡 Prétraiter en edge permet de réduire le trafic réseau & latence.")
+
 
     # -------------------- NIVEAU 7 --------------------
-    with st.expander("🟦 Niveau 7 — Workflow réel en usine"):
-        st.markdown("## 🟦 Niveau 7 — Workflow d’un projet réel en usine")
+with st.expander("🟦 Niveau 7 — Workflow réel en usine", expanded=True):
+        st.markdown("## 🟦 Niveau 7 — Workflow complet d’un projet de maintenance prédictive en usine")
+    
         st.markdown("""
-        1️⃣ Collecte des données  
-        2️⃣ Nettoyage (outliers, valeurs manquantes)  
-        3️⃣ Feature engineering (RMS, kurtosis…)  
-        4️⃣ Entraînement ML/IA  
-        5️⃣ Détection d’anomalies  
-        6️⃣ Envoi d’alertes  
-        7️⃣ Planification de maintenance  
-        8️⃣ Suivi des KPI  
+        Dans une usine moderne, la maintenance prédictive suit un **processus structuré** pour garantir la fiabilité et réduire les coûts.  
+    
+        ### Étapes principales :
+    
+        1️⃣ **Collecte des données**
+        - Capteurs installés sur machines
+        - Mesures de vibration, température, courant, acoustique, pression…
+        - Transmission des données vers un serveur ou edge device
+    
+        2️⃣ **Nettoyage des données**
+        - Suppression des valeurs aberrantes (outliers)
+        - Gestion des valeurs manquantes
+        - Filtrage du bruit pour améliorer la qualité
+    
+        3️⃣ **Feature Engineering**
+        - Extraction de caractéristiques pertinentes : RMS, kurtosis, moyenne mobile…
+        - Transformation des signaux bruts en informations exploitables
+    
+        4️⃣ **Entraînement ML / IA**
+        - Modèles supervisés ou non supervisés
+        - Régression, classification, clustering, détection d’anomalies
+        - Validation et test pour s’assurer de la fiabilité
+    
+        5️⃣ **Détection d’anomalies**
+        - Identification des comportements anormaux ou des signes précurseurs de panne
+        - Détection en temps réel ou batch selon l’infrastructure
+    
+        6️⃣ **Envoi d’alertes**
+        - Notifications aux techniciens ou planificateurs
+        - SMS, email, dashboard, applications mobiles
+    
+        7️⃣ **Planification de maintenance**
+        - Décision basée sur les alertes et le calendrier
+        - Optimisation des interventions pour éviter les arrêts non planifiés
+    
+        8️⃣ **Suivi des KPI**
+        - MTBF, MTTR, disponibilité, taux d’anomalies
+        - Analyse continue pour améliorer le processus
         """)
-        st.success("🎯 C’est le cycle complet d’un système industriel moderne.")
+    
+        st.success("🎯 Retenir : c’est le cycle complet d’un système industriel moderne, combinant capteurs, données, IA et actions concrètes.")
 
     # -------------------- NIVEAU 8 --------------------
-    with st.expander("🟫 Niveau 8 — KPI essentiels"):
-        st.markdown("## 🟫 Niveau 8 — Les indicateurs clés")
+    with st.expander("🟫 Niveau 8 — KPI essentiels", expanded=True):
+        st.markdown("## 🟫 Niveau 8 — Les indicateurs clés de la maintenance prédictive")
+    
         st.markdown("""
-        - ⏱️ **MTBF** : temps moyen entre pannes  
-        - 🔧 **MTTR** : temps moyen de réparation  
-        - ⚙️ **Disponibilité** : MTBF / (MTBF + MTTR)  
+        Les **KPI (Key Performance Indicators)** permettent de mesurer la performance et l’efficacité de la maintenance.  
+    
+        ### Principaux KPI :
+    
+        - ⏱️ **MTBF (Mean Time Between Failures)**  
+          → Temps moyen entre deux pannes d’une machine  
+          **Exemple :** Une machine tombe en panne 4 fois sur 400 h → MTBF = 400 / 4 = 100 h
+    
+        - 🔧 **MTTR (Mean Time To Repair)**  
+          → Temps moyen nécessaire pour réparer une panne  
+          **Exemple :** Temps total de réparation = 20 h, 4 pannes → MTTR = 20 / 4 = 5 h
+    
+        - ⚙️ **Disponibilité**  
+          → Pourcentage de temps où la machine est opérationnelle  
+          **Formule :** Disponibilité = MTBF / (MTBF + MTTR)  
+          **Exemple :** 100 / (100 + 5) ≈ 95.2%
+    
         - 📉 **Taux d’anomalies**  
-        - 💸 **Coût d’arrêt de production**
-
-        Ces KPI mesurent l’impact réel de la maintenance prédictive.
+          → Proportion des incidents détectés par le système prédictif  
+          **Objectif :** Identifier et réduire les anomalies avant panne
+    
+        - 💸 **Coût d’arrêt de production**  
+          → Évalue l’impact financier d’une panne ou d’un arrêt programmé
         """)
-        st.info("🎯 Suivre les KPI = prouver l’efficacité du système.")
+    
+        st.info("🎯 Retenir : Suivre ces KPI permet de prouver l’efficacité du système et d’optimiser la maintenance.")
+
 
     # -------------------- NIVEAU 9 --------------------
-    with st.expander("🟩 Niveau 9 — Cas pratiques"):
+    with st.expander("🟩 Niveau 9 — Cas pratiques", expanded=True):
         st.markdown("## 🟩 Niveau 9 — Cas pratiques inspirés du réel")
+    
         st.markdown("""
-        - 🔧 Défaillance moteur → vibrations + courant  
-        - 🎧 Analyse acoustique → compresseurs  
-        - 🔥 Suivi de température → fours industriels  
-        - ⚙️ Roulements → analyse FFT + signatures  
-        - 🏭 Lignes d'assemblage → prédiction multi-capteurs  
-
-        Chaque cas = un mini-projet complet.
+        ### Exemples concrets de maintenance prédictive :
+    
+        - 🔧 **Défaillance moteur**  
+          → Mesures : vibrations + courant  
+          → Objectif : détecter l'usure des roulements avant panne  
+    
+        - 🎧 **Analyse acoustique de compresseurs**  
+          → Mesures : bruit, ultrasons  
+          → Objectif : repérer fuites d'air ou anomalies mécaniques  
+    
+        - 🔥 **Suivi de température de fours industriels**  
+          → Mesures : capteurs thermiques  
+          → Objectif : anticiper surchauffe ou dysfonctionnement  
+    
+        - ⚙️ **Roulements et pièces rotatives**  
+          → Mesures : analyse FFT + signatures vibratoires  
+          → Objectif : prévoir la défaillance avant arrêt de production  
+    
+        - 🏭 **Lignes d'assemblage multi-capteurs**  
+          → Mesures : vibration, courant, température, pression  
+          → Objectif : construire un modèle prédictif pour l'ensemble de la ligne
+    
+        💡 Chaque cas peut être considéré comme un mini-projet : collecte de données, nettoyage, analyse, modèle prédictif et suivi KPI.
         """)
-        st.success("Si tu veux, je peux transformer chaque cas en mini-project avec datasets + code Python.")
+    
+        st.success("🌟 Astuce : Ces mini-projets sont parfaits pour pratiquer Python, Plotly et Machine Learning en maintenance prédictive.")
 
 
 
@@ -704,6 +857,7 @@ elif section == "ℹ️ À propos":
         et accessible.
 
         """)
+
 
 
 

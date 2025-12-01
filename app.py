@@ -615,13 +615,13 @@ elif section == "📖 Ressources":
             
             Cours Gratuits
             
-            [Introduction à la maintenance prédictive →](https://fr.mathworks.com/discovery/predictive-maintenance.html)
-            [Série de vidéos sur la maintenance prédictive →](https://fr.mathworks.com/videos/series/predictive-maintenance-tech-talk-series.html)
-            [Predictive Maintenance Toolbox →](https://fr.mathworks.com/videos/predictive-maintenance-toolbox-overview-1519682269879.html)
-            [Predictive Maintenance: Prognostics and Health Monitoring →](https://fr.mathworks.com/videos/predictive-maintenance-with-matlab-120998.html)
-            [Predictive Maintenance with MATLAB: A Data-Based Approach Overview →](https://fr.mathworks.com/videos/predictive-maintenance-with-matlab-a-data-based-approach-1635953744450.html)
-            [Predictive Maintenance Toolbox — Examples →](https://fr.mathworks.com/help/predmaint/examples.html)
-            [Des jumeaux numériques pour la maintenance prédictive →](https://fr.mathworks.com/campaigns/offers/next/digital-twins-for-predictive-maintenance.html)
+           - [Introduction à la maintenance prédictive →](https://fr.mathworks.com/discovery/predictive-maintenance.html) 
+           - [Série de vidéos sur la maintenance prédictive →](https://fr.mathworks.com/videos/series/predictive-maintenance-tech-talk-series.html) 
+           - [Predictive Maintenance Toolbox →](https://fr.mathworks.com/videos/predictive-maintenance-toolbox-overview-1519682269879.html) 
+           - [Predictive Maintenance: Prognostics and Health Monitoring →](https://fr.mathworks.com/videos/predictive-maintenance-with-matlab-120998.html) 
+           -  [Predictive Maintenance with MATLAB: A Data-Based Approach Overview →](https://fr.mathworks.com/videos/predictive-maintenance-with-matlab-a-data-based-approach-1635953744450.html) 
+           -  [Predictive Maintenance Toolbox — Examples →](https://fr.mathworks.com/help/predmaint/examples.html) 
+           - [Des jumeaux numériques pour la maintenance prédictive →](https://fr.mathworks.com/campaigns/offers/next/digital-twins-for-predictive-maintenance.html) 
             """)
         
         with col2:
@@ -630,9 +630,9 @@ elif section == "📖 Ressources":
 
             Cours Payants
        
-            - [predictive-maintenance →](https://www.udemy.com/course/master-in-predictive-maintenance/)
-            - [preventive-maintenance-basics →](https://www.udemy.com/course/preventive-maintenance-basics/)
-            - [Cours Machine Learning →](https://www.udemy.com/course/predictive-maintenance-with-iot-and-machine-learning/)
+            - [predictive-maintenance →](https://www.udemy.com/course/master-in-predictive-maintenance/) 
+            - [preventive-maintenance-basics →](https://www.udemy.com/course/preventive-maintenance-basics/) 
+            - [Cours Machine Learning →](https://www.udemy.com/course/predictive-maintenance-with-iot-and-machine-learning/) 
             """)
     
     with tab2:
@@ -1247,6 +1247,7 @@ elif section == "ℹ️ À propos":
         et accessible.
 
         """)
+
 
 
 

@@ -4,6 +4,7 @@ pandas
 plotly
 joblib
 scikit-learn
+xgboost
 
 
 

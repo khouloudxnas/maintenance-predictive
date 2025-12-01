@@ -129,121 +129,187 @@ if section == "🏠 Accueil":
 # THÉORIE — Parcours complet débutant → expert (2 niveaux par expander)
 elif section == "📚 Théorie":
     st.title("📚 Théorie & Parcours : Débutant → Expert")
-    st.markdown("### Suivez le parcours complet pour passer de 0% → expert en maintenance prédictive")
-    st.markdown("Utilisez les expanders pour naviguer niveau par niveau. Chaque bloc contient explications, exemples et notions clés.")
+    st.markdown("### Formation complète pour apprendre la maintenance prédictive de 0% à expert.")
 
-    # Niveaux 0 & 1
-    with st.expander("🟦 Niveau 0 — Comprendre (Intro)  & 🟩 Niveau 1 — Types de maintenance", expanded=True):
-        st.markdown("## 🟦 Niveau 0 — Comprendre simplement : c’est quoi la maintenance prédictive ?")
+    # -------------------- NIVEAU 0 --------------------
+    with st.expander("🟦 Niveau 0 — Comprendre simplement (Introduction)", expanded=True):
+        st.markdown("## 🟦 Niveau 0 — C’est quoi la maintenance prédictive ?")
         st.markdown("""
-        La maintenance prédictive permet de **prévoir** qu’une machine va tomber en panne **avant** que cela arrive.
-        
-        ➤ Elle utilise : **capteurs, données, algorithmes**.  
-        ➤ Objectif : éviter les pannes, économiser de l'argent, augmenter la sécurité.
+        La maintenance prédictive permet de **prévoir** qu’une machine va tomber en panne **avant** qu’elle ne tombe réellement en panne.
+
+        Elle utilise :  
+        - **des capteurs**,  
+        - **des données**,  
+        - **des algorithmes**.
+
+        **Objectifs :** éviter les pannes, réduire les coûts, améliorer la sécurité.
+
+        **Exemple simple :**  
+        Une voiture fait un bruit → tu vas chez le mécanicien.  
+        Une machine industrielle → capteurs → algorithme → alerte avant panne.
         """)
-        st.markdown("**Exemple simple :**")
-        st.markdown("- Ta voiture fait un bruit inhabituel → tu vas chez le mécanicien.")
-        st.markdown("- Une machine industrielle a des capteurs qui détectent ce bruit → un algorithme prévient les techniciens avant la panne.")
-        st.info("Astuce : Pense toujours 'données → décision'.")
+        st.info("🌟 Retenir : la maintenance prédictive = anticiper grâce aux données.")
 
-        st.markdown("---")
-        st.markdown("## 🟩 Niveau 1 — Les 3 types de maintenance")
-        st.markdown("**1️⃣ Corrective** : intervenir après la panne → coûte cher, arrête la production.")
-        st.markdown("**2️⃣ Préventive** : entretien planifié → parfois inutile (basée sur calendrier).")
-        st.markdown("**3️⃣ Prédictive** : basée sur l’analyse de données → meilleure stratégie moderne.")
-        st.success("Pourquoi choisir la prédictive ? Réduction des coûts, optimisation des interventions, meilleure disponibilité.")
+    # -------------------- NIVEAU 1 --------------------
+    with st.expander("🟩 Niveau 1 — Les 3 types de maintenance"):
+        st.markdown("## 🟩 Niveau 1 — Corrective, Préventive, Prédictive")
+        st.markdown("""
+        ### 🔴 1) Maintenance Corrective  
+        → On répare **après** la panne  
+        ❌ Très coûteux  
+        ❌ Arrêt de production  
 
-    # Niveaux 2 & 3
-    with st.expander("🟨 Niveau 2 — Capteurs & données  & 🟧 Niveau 3 — Analyse des données", expanded=False):
-        st.markdown("## 🟨 Niveau 2 — Capteurs & données")
-        st.markdown("Les capteurs sont les « yeux » de la machine. Ils fournissent les mesures nécessaires pour détecter les anomalies.")
-        st.markdown("### Capteurs courants :")
-        st.markdown("- 🌊 **Vibration** → roulements, déséquilibre")
-        st.markdown("- 🌡️ **Température** → surchauffe")
-        st.markdown("- ⚡ **Courant électrique** → surcharge moteur")
-        st.markdown("- 🔊 **Acoustique / Ultrasons** → fuites d’air, fissures")
-        st.markdown("- 🧰 **Pression** → hydraulique / pneumatique")
-        st.markdown("- 💧 **Humidité** → moteurs et transformateurs")
-        st.markdown("### Notions importantes : fréquence d'échantillonnage, bruit, intervalle de mesure, qualité des données.")
-        st.info("Bonnes pratiques : calibrer les capteurs, vérifier les données manquantes et filtrer le bruit.")
+        ### 🟡 2) Maintenance Préventive  
+        → Entretien basé sur un **calendrier fixe**  
+        ⚠️ Peut être inutile (machine encore en bon état)
 
-        st.markdown("---")
-        st.markdown("## 🟧 Niveau 3 — Analyse des données (Data Analysis)")
-        st.markdown("Pour exploiter les capteurs, on applique :")
-        st.markdown("- **Statistiques** : moyenne, variance, tendance")
-        st.markdown("- **Détection de pics** : identifier pannes imminentes")
-        st.markdown("- **Visualisations** : histogrammes, spectres, courbes temporelles")
-        st.markdown("- **Analyse des signatures vibratoires** : repérer l’usure de roulements, déséquilibres")
-        st.info("Exercice : collecter 1000 échantillons vibration et tracer l'histogramme + FFT pour repérer fréquences anormales.")
+        ### 🟢 3) Maintenance Prédictive  
+        → Basée sur les **données et capteurs**  
+        ✔️ Optimise les interventions  
+        ✔️ Évite arrêts non planifiés  
+        ✔️ Économique et moderne
+        """)
 
-    # Niveaux 4 & 5
-    with st.expander("🟥 Niveau 4 — ML & IA  & 🟪 Niveau 5 — Modèles avancés (Deep Learning)", expanded=False):
-        st.markdown("## 🟥 Niveau 4 — Le Machine Learning & l’IA en maintenance")
-        st.markdown("Méthodes principales :")
-        st.markdown("1️⃣ **Régression** → prédire une valeur (ex: température future)")
-        st.markdown("2️⃣ **Classification** → déterminer l'état (normal / anomalie)")
-        st.markdown("3️⃣ **Clustering** → détecter comportements anormaux sans étiquette")
-        st.markdown("4️⃣ **Anomaly detection** → repérer pannes inconnues")
-        st.markdown("### Workflow ML basique : collecte → nettoyage → features → split → entraînement → évaluation → déploiement")
-        st.info("Start simple : modèles linéaires / arbres, puis évoluer vers modèles plus complexes si besoin.")
+    # -------------------- NIVEAU 2 --------------------
+    with st.expander("🟨 Niveau 2 — Capteurs & Données"):
+        st.markdown("## 🟨 Niveau 2 — Capteurs utilisés en maintenance prédictive")
+        st.markdown("""
+        Les capteurs sont les **yeux et les oreilles** des machines.
 
-        st.markdown("---")
-        st.markdown("## 🟪 Niveau 5 — Modèles avancés (Deep Learning)")
-        st.markdown("Pour signaux complexes et séries temporelles :")
-        st.markdown("- **CNN** : pour extraire motifs locaux (ex : spectrogrammes vibratoires)")
-        st.markdown("- **LSTM / GRU** : pour dépendances temporelles sur séries longues")
-        st.markdown("- **Auto-encoders** : pour détection d'anomalie non supervisée")
-        st.markdown("Astuce : transformer signal en spectrogramme + utiliser CNN = très efficace pour vibrations complexes.")
-        st.success("Rappel : commencer par baseline simple avant d'utiliser du deep learning coûteux en données et calcul.")
+        ### Capteurs courants :
+        - 🌊 **Vibrations** → roulements, déséquilibre
+        - 🌡️ **Température** → surchauffe
+        - ⚡ **Courant** → surcharge moteur
+        - 🔊 **Acoustique / Ultrasons** → fissures, fuites
+        - 🧰 **Pression** → hydraulique / pneumatique
+        - 💧 **Humidité** → moteurs, transformateurs
 
-    # Niveaux 6 & 7
-    with st.expander("🟫 Niveau 6 — Architecture IoT  & 🟦 Niveau 7 — Workflow usine réel", expanded=False):
-        st.markdown("## 🟫 Niveau 6 — Architecture IoT")
-        st.markdown("Composants d'un système complet :")
-        st.markdown("- 📡 **Capteurs** → acquisition")
-        st.markdown("- 🧠 **Edge computing** (Raspberry Pi, microcontrôleur) → prétraitement, filtrage, calcul léger")
-        st.markdown("- ☁️ **Cloud** (AWS, Azure, GCP) → stockage, entraînement modèles, pipeline")
-        st.markdown("- 📊 **Tableau de bord** (Power BI, Grafana, Streamlit) → visualisation & alerting")
-        st.info("Design tip : faire du pré-traitement en edge réduit latence et coût réseau.")
+        ### Notions essentielles :
+        - Fréquence d’échantillonnage  
+        - Bruit du signal  
+        - Intervalle de mesure  
+        - Qualité des données  
+        """)
+        st.info("🎯 Une bonne prédiction = données propres + capteurs bien choisis.")
 
-        st.markdown("---")
-        st.markdown("## 🟦 Niveau 7 — Workflow réel dans une usine")
-        st.markdown("Étapes pratiques :")
-        st.markdown("1. **Collecte des données** (synchronisation horodatage)")
-        st.markdown("2. **Nettoyage** (gestion valeurs manquantes, outliers)")
-        st.markdown("3. **Feature engineering** (RMS, crest factor, énergie spectrale…)")
-        st.markdown("4. **Entraînement du modèle** (choix métriques : précision, recall, F1, AUC)")
-        st.markdown("5. **Détection des anomalies** en temps réel")
-        st.markdown("6. **Envoi d’alertes** (emails, SMS, systèmes de ticket)")
-        st.markdown("7. **Planification de la maintenance** (ordres de travail optimisés)")
-        st.markdown("8. **Suivi des KPI** et rétroaction pour améliorer le modèle")
-        st.success("Important : intégrer le retour terrain (techniciens) pour améliorer la qualité des labels et la précision.")
+    # -------------------- NIVEAU 3 --------------------
+    with st.expander("🟧 Niveau 3 — Analyse de données (Data Analysis)"):
+        st.markdown("## 🟧 Niveau 3 — Analyse des données")
+        st.markdown("""
+        Pour exploiter les mesures, il faut analyser les signaux :
 
-    # Niveaux 8 & 9
-    with st.expander("🟫 Niveau 8 — KPI essentiels  & 🟩 Niveau 9 — Cas pratiques", expanded=False):
-        st.markdown("## 🟫 Niveau 8 — KPI essentiels")
-        st.markdown("- **MTBF** : Mean Time Between Failures (temps moyen entre pannes)")
-        st.markdown("- **MTTR** : Mean Time To Repair (temps moyen de réparation)")
-        st.markdown("- **Disponibilité** : A = MTBF / (MTBF + MTTR)")
-        st.markdown("- **Taux d’anomalies détectées**")
-        st.markdown("- **Coût d’arrêt de production**")
-        st.info("Suivre ces KPI permet d'évaluer l'impact économique de la maintenance prédictive.")
+        ### Méthodes :
+        - 📊 Statistiques : moyenne, variance, tendance  
+        - 🔺 Détection de pics : anomalies brutales  
+        - 📈 Courbes temporelles : évolution dans le temps  
+        - 🎧 Analyse vibratoire : signatures de roulements  
+        - 📉 FFT (spectre) : fréquences de défaillances
 
-        st.markdown("---")
-        st.markdown("## 🟩 Niveau 9 — Cas pratiques (idées de projets)")
-        st.markdown("- Détection de défaillance d’un moteur (vibration + courant)")
-        st.markdown("- Analyse vibratoire d’un roulement (FFT + features temporelles)")
-        st.markdown("- Tracking de température d’un four industriel (détection dérive)")
-        st.markdown("- Analyse acoustique de compresseur (classif. par spectrogramme)")
-        st.markdown("- Modèle prédictif pour lignes d'assemblage (combinaison capteurs)")
-        st.info("Conseil : pour chaque cas pratique, définir dataset, métrique d'évaluation, et seuil d'alerte opérationnel.")
+        ### Objectif :
+        Transformer les signaux → en informations → en décisions.
+        """)
+        st.info("🧠 La data analysis est la base avant de faire du Machine Learning.")
 
-    # Optionnel : bouton pour télécharger le plan complet en PDF (si tu veux l'ajouter plus tard)
-    st.markdown("---")
-    st.markdown("**Besoin d'ajouts ?** Si tu veux, je peux :")
-    st.markdown("- transformer chaque niveau en une leçon avec mini-exercices interactifs")
-    st.markdown("- ajouter un quiz par niveau et un suivi de progression")
-    st.markdown("- convertir ce parcours en PDF téléchargeable")
+    # -------------------- NIVEAU 4 --------------------
+    with st.expander("🟥 Niveau 4 — Machine Learning & IA"):
+        st.markdown("## 🟥 Niveau 4 — Machine Learning pour la maintenance")
+        st.markdown("""
+        Les algorithmes apprennent à reconnaître les pannes.
+
+        ### Méthodes ML :
+        1️⃣ **Régression** → prédire une valeur future  
+        2️⃣ **Classification** → normal vs anormal  
+        3️⃣ **Clustering** → grouper comportements inconnus  
+        4️⃣ **Détection d’anomalies** → repérer pannes rares  
+
+        ### Workflow ML :
+        - collecte  
+        - nettoyage  
+        - features  
+        - entraînement  
+        - test  
+        - déploiement  
+        """)
+
+    # -------------------- NIVEAU 5 --------------------
+    with st.expander("🟪 Niveau 5 — Modèles avancés (Deep Learning)"):
+        st.markdown("## 🟪 Niveau 5 — Deep Learning")
+        st.markdown("""
+        Pour signaux complexes :
+
+        - **CNN** → images, spectrogrammes vibratoires  
+        - **LSTM / GRU** → séries temporelles longues  
+        - **Auto-encoders** → détection d’anomalies sans labels  
+
+        Avantage : très puissant  
+        Inconvénient : demande beaucoup de données
+        """)
+        st.info("🌟 À utiliser pour vibrations complexes ou très grandes installations.")
+
+    # -------------------- NIVEAU 6 --------------------
+    with st.expander("🟫 Niveau 6 — Architecture IoT"):
+        st.markdown("## 🟫 Niveau 6 — Architecture IoT complète")
+        st.markdown("""
+        Un système complet comprend :
+
+        ### 1) 📡 Capteurs  
+        → acquisition des signaux
+
+        ### 2) 🧠 Edge computing (Raspberry Pi / MCU)  
+        → filtrage, prétraitement, mini-modèles
+
+        ### 3) ☁️ Cloud (AWS, Azure, GCP)  
+        → stockage, analyse, entraînement IA
+
+        ### 4) 📊 Dashboard  
+        → interface utilisateur : Power BI, Grafana, Streamlit
+        """)
+        st.info("💡 Prétraiter en edge permet de réduire le trafic réseau & latence.")
+
+    # -------------------- NIVEAU 7 --------------------
+    with st.expander("🟦 Niveau 7 — Workflow réel en usine"):
+        st.markdown("## 🟦 Niveau 7 — Workflow d’un projet réel en usine")
+        st.markdown("""
+        1️⃣ Collecte des données  
+        2️⃣ Nettoyage (outliers, valeurs manquantes)  
+        3️⃣ Feature engineering (RMS, kurtosis…)  
+        4️⃣ Entraînement ML/IA  
+        5️⃣ Détection d’anomalies  
+        6️⃣ Envoi d’alertes  
+        7️⃣ Planification de maintenance  
+        8️⃣ Suivi des KPI  
+        """)
+        st.success("🎯 C’est le cycle complet d’un système industriel moderne.")
+
+    # -------------------- NIVEAU 8 --------------------
+    with st.expander("🟫 Niveau 8 — KPI essentiels"):
+        st.markdown("## 🟫 Niveau 8 — Les indicateurs clés")
+        st.markdown("""
+        - ⏱️ **MTBF** : temps moyen entre pannes  
+        - 🔧 **MTTR** : temps moyen de réparation  
+        - ⚙️ **Disponibilité** : MTBF / (MTBF + MTTR)  
+        - 📉 **Taux d’anomalies**  
+        - 💸 **Coût d’arrêt de production**
+
+        Ces KPI mesurent l’impact réel de la maintenance prédictive.
+        """)
+        st.info("🎯 Suivre les KPI = prouver l’efficacité du système.")
+
+    # -------------------- NIVEAU 9 --------------------
+    with st.expander("🟩 Niveau 9 — Cas pratiques"):
+        st.markdown("## 🟩 Niveau 9 — Cas pratiques inspirés du réel")
+        st.markdown("""
+        - 🔧 Défaillance moteur → vibrations + courant  
+        - 🎧 Analyse acoustique → compresseurs  
+        - 🔥 Suivi de température → fours industriels  
+        - ⚙️ Roulements → analyse FFT + signatures  
+        - 🏭 Lignes d'assemblage → prédiction multi-capteurs  
+
+        Chaque cas = un mini-projet complet.
+        """)
+        st.success("Si tu veux, je peux transformer chaque cas en mini-project avec datasets + code Python.")
+
+
 
 # RESSOURCES
 elif section == "📖 Ressources":
@@ -506,6 +572,7 @@ elif section == "ℹ️ À propos":
         et accessible.
 
         """)
+
 
 
 

@@ -661,7 +661,7 @@ elif section == "📖 Ressources":
         - Usage : estimation du RUL, modèles séquentiels (LSTM, survival regression…)  
         - Format : fichiers texte / CSV (train / test / truth)  
         - Idéal pour : features time-series, segmentation  
-        - [Télécharger / Source officielle](https://data.nasa.gov/)  
+        - [Télécharger / Source officielle](https://data.nasa.gov/dataset/)  
     
         2️⃣ **Kaggle / miroirs du C-MAPSS**  
         - Usage : ZIP/CSV prêt à l’emploi + notebooks Python  
@@ -670,7 +670,7 @@ elif section == "📖 Ressources":
         3️⃣ **FEMTO / PRONOSTIA — Roulements run-to-failure**  
         - Usage : données vibratoires de roulements, RUL des roulements  
         - Format : .mat / .txt / zip  
-        - [Télécharger / NASA PCoE](https://www.nasa.gov/) | [GitHub / Kaggle miroirs](https://github.com/)  
+        - [Télécharger / NASA PCoE](https://data.nasa.gov/dataset/) | [GitHub / Kaggle miroirs](https://github.com/)  
     
         4️⃣ **IMS Bearings (University of Cincinnati)**  
         - Usage : essais de roulements (vibrations), diagnostics et RUL  
@@ -684,7 +684,7 @@ elif section == "📖 Ressources":
     
         6️⃣ **IEEE PHM / autres jeux (batteries, turbomachines)**  
         - Usage : tests multi-composants, challenges PHM  
-        - [Kaggle](https://www.kaggle.com/) | [NASA PCoE](https://data.nasa.gov/)
+        - [Kaggle](https://www.kaggle.com/) | [NASA PCoE](https://data.nasa.gov/dataset//)
         """)
 
 
@@ -1006,6 +1006,7 @@ elif section == "ℹ️ À propos":
         et accessible.
 
         """)
+
 
 
 

@@ -132,7 +132,7 @@ elif section == "📚 Théorie":
     st.markdown("### Formation complète pour apprendre la maintenance prédictive de 0% à expert.")
 
     # -------------------- NIVEAU 0 --------------------
-   with st.expander("🟦 Niveau 0 — Comprendre simplement (Introduction)", expanded=True):
+    with st.expander("🟦 Niveau 0 — Comprendre simplement (Introduction)", expanded=True):
         st.markdown("## 🟦 Niveau 0 — C’est quoi la maintenance prédictive ?")
     
         st.markdown("""
@@ -225,6 +225,7 @@ elif section == "📚 Théorie":
         """)
     
         st.info("🌟 À retenir : La maintenance prédictive = anticiper les pannes grâce aux capteurs, aux données et à l’IA.")
+
 
     # -------------------- NIVEAU 1 --------------------
     with st.expander("🟩 Niveau 1 — Les 3 types de maintenance"):
@@ -648,6 +649,7 @@ elif section == "ℹ️ À propos":
         et accessible.
 
         """)
+
 
 
 

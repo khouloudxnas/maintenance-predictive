@@ -946,10 +946,6 @@ elif section == "📈 Upload & Analyse":
     Téléversez votre dataset et votre modèle entraîné pour analyser vos données,
     calculer les KPI (MTBF, MTTR, Disponibilité), prédire le RUL, et visualiser les mesures.
     """)
-    st.markdown("""
-    Téléversez votre dataset et votre modèle entraîné pour analyser vos données,
-    calculer les KPI (MTBF, MTTR, Disponibilité), prédire le RUL, et visualiser les mesures.
-    """)
 
     # Upload du dataset
     uploaded_file = st.file_uploader("📄 Téléversez votre dataset CSV", type=["csv"])
@@ -1062,6 +1058,7 @@ elif section == "ℹ️ À propos":
         et accessible.
 
         """)
+
 
 
 

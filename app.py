@@ -947,45 +947,49 @@ elif section == "📤 Upload & Analyse":
     calculer les KPI (MTBF, MTTR, Disponibilité), prédire le RUL, et visualiser les mesures.
     """)
 
+    st.info("💡 Commencez par uploader un dataset CSV. Ensuite, vous pourrez uploader un modèle pour les prédictions.")
+
+
     # Upload du dataset
     uploaded_file = st.file_uploader("📄 Téléversez votre dataset CSV", type=["csv"])
-    if uploaded_file is not None:
+    uploaded_model = st.file_uploader("🤖 Téléversez votre modèle (.pkl)", type=["pkl"])
+
+    if uploaded_file is None:
+        st.warning("⚠️ Aucun dataset chargé pour l'instant.")
+    else:
         df = pd.read_csv(uploaded_file)
         st.success("✅ Dataset chargé avec succès !")
         st.dataframe(df.head(), use_container_width=True)
-        
-        # Graphiques interactifs
-        st.markdown("### 📊 Visualisation des données")
-        for col in df.columns:
-            if df[col].dtype in ['int64', 'float64']:
-                fig = px.line(df, y=col, title=f"Évolution de {col}")
-                st.plotly_chart(fig, use_container_width=True)
 
-    # Upload du modèle entraîné
-    uploaded_model = st.file_uploader("🤖 Téléversez votre modèle (.pkl)", type=["pkl"])
-    if uploaded_model is not None:
+        
+        
+    if uploaded_model is None:
+        st.info("ℹ️ Vous pouvez uploader votre modèle pour prédire le RUL.")
+    else:
         st.success("✅ Modèle chargé avec succès !")
         model = joblib.load(uploaded_model)
+
+            
+    if uploaded_file is not None and uploaded_model is not None:
+        X = df.select_dtypes(include=[np.number])
+        predictions = model.predict(X)
+        df['RUL_prédit'] = predictions
+        st.dataframe(df.head(), use_container_width=True)
         
-        if uploaded_file is not None:
-            st.markdown("### 🔮 Prédiction du RUL avec votre modèle")
-            X = df.select_dtypes(include=[np.number])  # Exemple : toutes les colonnes numériques
-            predictions = model.predict(X)
-            df['RUL_prédit'] = predictions
-            st.dataframe(df.head(), use_container_width=True)
-            
-            # KPI simples
-            st.markdown("### ⚙️ Calcul des KPI")
-            nb_pannes = (df['RUL_prédit'] <= 0).sum()
-            temps_fonctionnement = len(df)
-            temps_reparation = 5 * nb_pannes  # Exemple
-            mtbf = temps_fonctionnement / max(nb_pannes, 1)
-            mttr = temps_reparation / max(nb_pannes, 1)
-            dispo = mtbf / (mtbf + mttr) * 100
-            
-            st.markdown(f"- **MTBF** = {mtbf:.2f}")
-            st.markdown(f"- **MTTR** = {mttr:.2f}")
-            st.markdown(f"- **Disponibilité** = {dispo:.2f}%")
+        # KPI simples
+        nb_pannes = (df['RUL_prédit'] <= 0).sum()
+        temps_fonctionnement = len(df)
+        temps_reparation = 5 * nb_pannes
+        mtbf = temps_fonctionnement / max(nb_pannes,1)
+        mttr = temps_reparation / max(nb_pannes,1)
+        dispo = mtbf / (mtbf + mttr) * 100
+    
+        st.markdown(f"- **MTBF** = {mtbf:.2f}")
+        st.markdown(f"- **MTTR** = {mttr:.2f}")
+        st.markdown(f"- **Disponibilité** = {dispo:.2f}%")
+else:
+    st.info("ℹ️ Téléversez à la fois le dataset et le modèle pour effectuer les calculs et visualisations.")
+
 
 
 
@@ -1057,6 +1061,7 @@ elif section == "ℹ️ À propos":
         et accessible.
 
         """)
+
 
 
 

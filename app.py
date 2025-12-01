@@ -991,6 +991,7 @@ elif section == "📈 Upload & Analyse":
             st.info("👆 Veuillez importer un fichier CSV pour commencer l'analyse")
     
     # ==================== TAB 2 : Upload Modèle ====================
+    # ==================== TAB 2 : Upload Modèle ====================
     with tab2:
         st.markdown("### 🤖 Importez votre modèle entraîné")
         
@@ -1004,29 +1005,57 @@ elif section == "📈 Upload & Analyse":
         if uploaded_model is not None:
             try:
                 import pickle
-                import joblib
                 
                 # Charger le modèle selon l'extension
                 if uploaded_model.name.endswith('.pkl'):
                     model = pickle.load(uploaded_model)
+                    st.success(f"✅ Modèle chargé avec succès : {uploaded_model.name}")
+                    st.info(f"📦 Type de modèle : {type(model).__name__}")
+                    
+                    # Stocker dans session_state
+                    st.session_state['model'] = model
+                    st.session_state['model_loaded'] = True
+                    
                 elif uploaded_model.name.endswith('.joblib'):
-                    model = joblib.load(uploaded_model)
+                    try:
+                        import joblib
+                        model = joblib.load(uploaded_model)
+                        st.success(f"✅ Modèle chargé avec succès : {uploaded_model.name}")
+                        st.info(f"📦 Type de modèle : {type(model).__name__}")
+                        
+                        # Stocker dans session_state
+                        st.session_state['model'] = model
+                        st.session_state['model_loaded'] = True
+                    except ImportError:
+                        st.error("❌ Le module 'joblib' n'est pas installé. Installez-le avec : pip install joblib")
+                        st.info("💡 Ou utilisez un fichier .pkl à la place")
+                        
                 elif uploaded_model.name.endswith('.h5'):
                     st.warning("⚠️ Pour les modèles .h5, TensorFlow/Keras doit être installé")
-                    # from tensorflow import keras
-                    # model = keras.models.load_model(uploaded_model)
-                
-                st.success(f"✅ Modèle chargé avec succès : {uploaded_model.name}")
-                st.info(f"📦 Type de modèle : {type(model).__name__}")
-                
-                # Stocker dans session_state
-                st.session_state['model'] = model
-                st.session_state['model_loaded'] = True
-                
+                    try:
+                        from tensorflow import keras
+                        model = keras.models.load_model(uploaded_model)
+                        st.success(f"✅ Modèle chargé avec succès : {uploaded_model.name}")
+                        st.info(f"📦 Type de modèle : Keras Model")
+                        
+                        # Stocker dans session_state
+                        st.session_state['model'] = model
+                        st.session_state['model_loaded'] = True
+                    except ImportError:
+                        st.error("❌ TensorFlow/Keras n'est pas installé. Installez-le avec : pip install tensorflow")
+                    except Exception as e:
+                        st.error(f"❌ Erreur lors du chargement du modèle Keras : {str(e)}")
+                    
             except Exception as e:
                 st.error(f"❌ Erreur lors du chargement du modèle : {str(e)}")
         else:
             st.info("👆 Veuillez importer un modèle pour effectuer des prédictions")
+            st.markdown("""
+            **Formats acceptés :**
+            - `.pkl` : Modèles pickle (recommandé, compatible par défaut)
+            - `.joblib` : Modèles joblib (nécessite `pip install joblib`)
+            - `.h5` : Modèles Keras/TensorFlow (nécessite `pip install tensorflow`)
+            """)
     
     # ==================== TAB 3 : Analyse & Résultats ====================
     with tab3:
@@ -1315,6 +1344,7 @@ elif section == "ℹ️ À propos":
         et accessible.
 
         """)
+
 
 
 

@@ -600,7 +600,8 @@ elif section == "📚 Théorie":
 elif section == "📖 Ressources":
     st.title("📖 Ressources & Liens Utiles")
     
-    tab1, tab2, tab3 = st.tabs(["🎓 Cours en ligne", "🎬 Vidéos", "📄 Articles"])
+    tab1, tab2, tab3, tab4 = st.tabs(["🎓 Cours en ligne", "🎬 Vidéos", "📄 PDFs", "📊 Datasets"])
+
     
     with tab1:
         st.markdown("### Formations complètes")
@@ -652,12 +653,10 @@ elif section == "📖 Ressources":
         """)
     
     with tab3:
-        st.markdown("### Documentation et recherche")
-        st.markdown("""
-        - 📄 [Maintenance.org - Articles spécialisés](https://www.maintenance.org/)
-        - 📄 [IEEE - Publications scientifiques](https://ieeexplore.ieee.org/Xplore/home.jsp)
-        - 📄 [Guides pratiques et cas d'études](https://www.maintenance.org/guides)
-        """)
+    st.markdown("[Ressources PDF →](https://drive.google.com/drive/folders/https://drive.google.com/drive/folders/1VAjV-7u9YLm3CSw-CJ9mVapuozQis6hP?usp=sharing)")
+    with tab4:
+    st.markdown("- [Kaggle Dataset : Predictive Maintenance](https://www.kaggle.com/datasets)")
+    st.markdown("- [UCI Machine Learning Repository](https://archive.ics.uci.edu/ml/index.php)")
 
 
 # EXERCICES
@@ -978,6 +977,7 @@ elif section == "ℹ️ À propos":
         et accessible.
 
         """)
+
 
 
 

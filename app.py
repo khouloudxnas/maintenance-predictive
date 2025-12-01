@@ -228,24 +228,55 @@ elif section == "📚 Théorie":
 
 
     # -------------------- NIVEAU 1 --------------------
-    with st.expander("🟩 Niveau 1 — Les 3 types de maintenance"):
-        st.markdown("## 🟩 Niveau 1 — Corrective, Préventive, Prédictive")
-        st.markdown("""
-        ### 🔴 1) Maintenance Corrective  
-        → On répare **après** la panne  
-        ❌ Très coûteux  
-        ❌ Arrêt de production  
+    with st.expander("🟩 Niveau 1 — Les 3 types de maintenance", expanded=True):
+    st.markdown("## 🟩 Niveau 1 — Corrective, Préventive, Prédictive")
 
-        ### 🟡 2) Maintenance Préventive  
-        → Entretien basé sur un **calendrier fixe**  
-        ⚠️ Peut être inutile (machine encore en bon état)
+    st.markdown("""
+    Dans une usine, il existe trois types principaux de maintenance.  
+    Chacun a ses avantages et inconvénients.
 
-        ### 🟢 3) Maintenance Prédictive  
-        → Basée sur les **données et capteurs**  
-        ✔️ Optimise les interventions  
-        ✔️ Évite arrêts non planifiés  
-        ✔️ Économique et moderne
-        """)
+    ---
+
+    ### 🔴 1) Maintenance Corrective
+    → On intervient **après la panne**  
+    ⚠️ Inconvénients :
+    - Très coûteuse (arrêts imprévus, pièces à changer rapidement)  
+    - Arrêt complet de la production  
+    - Risque de détérioration d'autres machines  
+
+    ➤ Exemple : un moteur qui s'arrête soudainement et nécessite une réparation d'urgence.
+
+    ---
+
+    ### 🟡 2) Maintenance Préventive
+    → Entretien planifié sur **un calendrier fixe**  
+    ⚠️ Limitations :
+    - Parfois inutile si la machine est encore en bon état  
+    - Planification rigide, pas toujours adaptée aux variations de production  
+
+    ➤ Exemple : changer une pièce tous les 6 mois, même si elle est encore fonctionnelle.
+
+    ---
+
+    ### 🟢 3) Maintenance Prédictive
+    → Basée sur l’analyse des **données collectées par les capteurs**  
+    ✔️ Avantages :
+    - Optimise les interventions (on répare seulement si nécessaire)  
+    - Évite les arrêts non planifiés  
+    - Réduit les coûts et augmente la durée de vie des équipements  
+
+    ➤ Exemple : un capteur détecte une vibration anormale → l’algorithme prévoit une panne → le technicien intervient à temps.
+
+    ---
+
+    🌟 **À retenir :**
+    - Corrective = réagir après la panne  
+    - Préventive = suivre un calendrier fixe  
+    - Prédictive = anticiper grâce aux données et capteurs
+    """)
+
+    st.info("💡 Conseil : La maintenance prédictive est la stratégie moderne la plus efficace pour les industries.")
+
 
     # -------------------- NIVEAU 2 --------------------
     with st.expander("🟨 Niveau 2 — Capteurs & Données"):
@@ -649,6 +680,7 @@ elif section == "ℹ️ À propos":
         et accessible.
 
         """)
+
 
 
 

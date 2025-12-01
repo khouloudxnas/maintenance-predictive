@@ -71,7 +71,7 @@ st.sidebar.markdown("# 🔧 Navigation")
 st.sidebar.markdown("---")
 section = st.sidebar.radio(
     "",
-    ["🏠 Accueil", "📚 Théorie", "📖 Ressources", "✏️ Exercices", "ℹ️ À propos"],
+    ["🏠 Accueil", "📚 Théorie", "📖 Ressources", "✏️ Exercices", 📈 Maintenance Prédictive : Upload & Analyse, "ℹ️ À propos"],
     label_visibility="collapsed"
 )
 
@@ -938,6 +938,57 @@ elif section == "✏️ Exercices":
 
 
 
+# ===================== UPLOAD & ANALYSE =====================
+elif section == "📤 Upload & Analyse":
+    st.title("📤 Upload de vos données et modèle")
+    
+    st.markdown("""
+    Téléversez votre dataset et votre modèle entraîné pour analyser vos données,
+    calculer les KPI (MTBF, MTTR, Disponibilité), prédire le RUL, et visualiser les mesures.
+    """)
+
+    # Upload du dataset
+    uploaded_file = st.file_uploader("📄 Téléversez votre dataset CSV", type=["csv"])
+    if uploaded_file is not None:
+        df = pd.read_csv(uploaded_file)
+        st.success("✅ Dataset chargé avec succès !")
+        st.dataframe(df.head(), use_container_width=True)
+        
+        # Graphiques interactifs
+        st.markdown("### 📊 Visualisation des données")
+        for col in df.columns:
+            if df[col].dtype in ['int64', 'float64']:
+                fig = px.line(df, y=col, title=f"Évolution de {col}")
+                st.plotly_chart(fig, use_container_width=True)
+
+    # Upload du modèle entraîné
+    uploaded_model = st.file_uploader("🤖 Téléversez votre modèle (.pkl)", type=["pkl"])
+    if uploaded_model is not None:
+        st.success("✅ Modèle chargé avec succès !")
+        model = joblib.load(uploaded_model)
+        
+        if uploaded_file is not None:
+            st.markdown("### 🔮 Prédiction du RUL avec votre modèle")
+            X = df.select_dtypes(include=[np.number])  # Exemple : toutes les colonnes numériques
+            predictions = model.predict(X)
+            df['RUL_prédit'] = predictions
+            st.dataframe(df.head(), use_container_width=True)
+            
+            # KPI simples
+            st.markdown("### ⚙️ Calcul des KPI")
+            nb_pannes = (df['RUL_prédit'] <= 0).sum()
+            temps_fonctionnement = len(df)
+            temps_reparation = 5 * nb_pannes  # Exemple
+            mtbf = temps_fonctionnement / max(nb_pannes, 1)
+            mttr = temps_reparation / max(nb_pannes, 1)
+            dispo = mtbf / (mtbf + mttr) * 100
+            
+            st.markdown(f"- **MTBF** = {mtbf:.2f}")
+            st.markdown(f"- **MTTR** = {mttr:.2f}")
+            st.markdown(f"- **Disponibilité** = {dispo:.2f}%")
+
+
+
 
     
 # À PROPOS
@@ -1006,6 +1057,7 @@ elif section == "ℹ️ À propos":
         et accessible.
 
         """)
+
 
 
 

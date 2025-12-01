@@ -734,7 +734,7 @@ elif section == "✏️ Exercices":
     # ===================== Niveau 4 =====================
     with st.expander("🟥 Niveau 4 — KPI & Calcul"):
         st.markdown("#### Exercice 1 : Calcul MTBF et MTTR")
-        st.markdown("nb_pannes = 5)"
+        st.markdown("nb_pannes = 5")
         st.markdown("temps_fonctionnement = 500")
         st.markdown("temps_reparation = 25")
         mtbf_input = st.number_input("MTBF :", key="n4_1")
@@ -843,6 +843,7 @@ elif section == "ℹ️ À propos":
         et accessible.
 
         """)
+
 
 
 

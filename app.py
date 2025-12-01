@@ -732,7 +732,7 @@ elif section == "✏️ Exercices":
                 st.error("❌ La moyenne correcte = 6.2")
 
 
-    # ===================== Niveau 4 =====================
+        # ===================== Niveau 4 =====================
     with st.expander("🟥 Niveau 4 — KPI & Calcul"):
         st.markdown("#### Exercice 1 : Calcul MTBF et MTTR")
         # ✅ Affichage des données
@@ -740,6 +740,13 @@ elif section == "✏️ Exercices":
         temps_fonctionnement = 500
         temps_reparation = 25
         st.write(f"**Données :** Nombre de pannes = {nb_pannes}, Temps de fonctionnement = {temps_fonctionnement} h, Temps de réparation = {temps_reparation} h")
+        
+        # Formules
+        st.markdown("""
+        **Formules :**  
+        - MTBF = Temps total de fonctionnement / Nombre de pannes  
+        - MTTR = Temps total de réparation / Nombre de pannes
+        """)
         
         mtbf_input = st.number_input("MTBF (heures) :", key="n4_1")
         mttr_input = st.number_input("MTTR (heures) :", key="n4_2")
@@ -771,6 +778,14 @@ elif section == "✏️ Exercices":
         vibration, temperature, courant = 7, 78, 5
         st.write(f"**Données :** Vibration = {vibration} mm/s, Température = {temperature} °C, Courant = {courant} A")
         
+        # Formules / seuils
+        st.markdown("""
+        **Seuils critiques :**  
+        - Vibration > 6 mm/s → risque de panne  
+        - Température > 75 °C → risque de panne  
+        - Courant > 6 A → risque de surcharge
+        """)
+        
         prediction = st.radio("La machine va-t-elle tomber en panne ?", ("Oui","Non"), key="n5_1")
     
         if st.button("Vérifier Exercice 1 (N5)", key="btn_n5_1"):
@@ -788,6 +803,13 @@ elif section == "✏️ Exercices":
         st.markdown("#### Exercice 2 : Analyse multi-capteurs")
         vibration, temperature, courant = 5, 70, 7
         st.write(f"**Données :** Vibration = {vibration} mm/s, Température = {temperature} °C, Courant = {courant} A")
+        
+        st.markdown("""
+        **Seuils critiques :**  
+        - Vibration > 6 mm/s  
+        - Température > 75 °C  
+        - Courant > 6 A
+        """)
     
         prediction2 = st.radio("Panne probable ?", ("Oui","Non"), key="n5_2")
     
@@ -802,6 +824,7 @@ elif section == "✏️ Exercices":
                     st.success("✅ Correct, tout est normal.")
                 else:
                     st.error("❌ Aucun paramètre critique n'est dépassé.")
+
 
 
     
@@ -871,6 +894,7 @@ elif section == "ℹ️ À propos":
         et accessible.
 
         """)
+
 
 
 

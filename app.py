@@ -1010,7 +1010,7 @@ elif section == "📈 Upload & Analyse":
                 elif ext == "h5":
                     st.warning("⚠️ TensorFlow doit être installé pour charger un modèle .h5")
                     from tensorflow import keras
-                     model = keras.models.load_model(uploaded_model)
+                    model = keras.models.load_model(uploaded_model)
                 else:
                     st.error("❌ Format non supporté")
                     st.stop()
@@ -1217,6 +1217,7 @@ elif section == "ℹ️ À propos":
         et accessible.
 
         """)
+
 
 
 

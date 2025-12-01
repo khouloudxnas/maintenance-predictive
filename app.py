@@ -989,11 +989,6 @@ elif section == "📤 Upload & Analyse":
         st.markdown(f"- **Disponibilité** = {dispo:.2f}%")
 else:
     st.info("ℹ️ Téléversez à la fois le dataset et le modèle pour effectuer les calculs et visualisations.")
-
-
-
-
-
     
 # À PROPOS
 elif section == "ℹ️ À propos":
@@ -1061,6 +1056,7 @@ elif section == "ℹ️ À propos":
         et accessible.
 
         """)
+
 
 
 

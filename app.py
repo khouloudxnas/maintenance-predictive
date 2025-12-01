@@ -653,10 +653,10 @@ elif section == "📖 Ressources":
         """)
     
     with tab3:
-    st.markdown("[Ressources PDF →](https://drive.google.com/drive/folders/1VAjV-7u9YLm3CSw-CJ9mVapuozQis6hP?usp=sharing)")
-    with tab4:
-    st.markdown("- [Kaggle Dataset : Predictive Maintenance](https://www.kaggle.com/datasets)")
-    st.markdown("- [UCI Machine Learning Repository](https://archive.ics.uci.edu/ml/index.php)")
+        st.markdown("[Ressources PDF →](https://drive.google.com/drive/folders/1VAjV-7u9YLm3CSw-CJ9mVapuozQis6hP?usp=sharing)")
+        with tab4:
+        st.markdown("- [Kaggle Dataset : Predictive Maintenance](https://www.kaggle.com/datasets)")
+        st.markdown("- [UCI Machine Learning Repository](https://archive.ics.uci.edu/ml/index.php)")
 
 
 # EXERCICES
@@ -977,6 +977,7 @@ elif section == "ℹ️ À propos":
         et accessible.
 
         """)
+
 
 
 

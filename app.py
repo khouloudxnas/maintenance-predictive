@@ -645,7 +645,7 @@ elif section == "✏️ Exercices":
     st.markdown("### Testez vos connaissances avec des exercices interactifs")
     
     # ===================== Niveau 0 =====================
-    with st.expander("🟦 Niveau 0 — Théorie simple"):
+    with st.expander("🟦 Théorie simple"):
         st.markdown("#### Exercice 1 : Objectif de la maintenance prédictive")
         reponse0_1 = st.radio("Quelle est la fonction principale ?", 
                               ("Réparer après panne", "Entretien planifié", "Anticiper les pannes"), key="n0_1")
@@ -665,7 +665,7 @@ elif section == "✏️ Exercices":
                 st.error("❌ Mauvaise réponse.")
 
     # ===================== Niveau 1 =====================
-    with st.expander("🟩 Niveau 1 — Types de maintenance"):
+    with st.expander("🟩 Types de maintenance"):
         st.markdown("#### Exercice 1 : Identifier la maintenance corrective")
         reponse1_1 = st.radio("Intervient après panne ?", ("Corrective", "Préventive", "Prédictive"), key="n1_1")
         if st.button("Vérifier Exercice 1 (N1)", key="btn_n1_1"):
@@ -683,7 +683,7 @@ elif section == "✏️ Exercices":
                 st.error("❌ Mauvaise réponse.")
 
     # ===================== Niveau 2 =====================
-    with st.expander("🟨 Niveau 2 — Capteurs & Données"):
+    with st.expander("🟨 Capteurs & Données"):
         st.markdown("#### Exercice 1 : Identifier les anomalies de température")
         temp_data = [70, 72, 71, 74, 78, 80, 72, 71, 69, 82]
         st.write(temp_data)
@@ -705,7 +705,7 @@ elif section == "✏️ Exercices":
                 st.error("❌ Le courant indique la surcharge moteur.")
 
     # ===================== Niveau 3 =====================
-    with st.expander("🟧 Niveau 3 — Analyse de données"):
+    with st.expander("🟧 Analyse de données"):
         st.markdown("#### Exercice 1 : Détection de pics")
         jours = pd.date_range(start="2025-12-01", periods=15)
         vibration = np.random.normal(5, 1, 15)
@@ -733,7 +733,7 @@ elif section == "✏️ Exercices":
 
 
         # ===================== Niveau 4 =====================
-    with st.expander("🟥 Niveau 4 — KPI & Calcul"):
+    with st.expander("🟥 KPI & Calcul"):
         st.markdown("#### Exercice 1 : Calcul MTBF et MTTR")
         # ✅ Affichage des données
         nb_pannes = 5
@@ -772,7 +772,7 @@ elif section == "✏️ Exercices":
                 st.error(f"❌ Disponibilité correcte = {round(dispo_correct,1)}%")
     
     # ===================== Niveau 5 =====================
-    with st.expander("🟪 Niveau 5 — Prédiction de panne"):
+    with st.expander("🟪 Prédiction de panne"):
         st.markdown("#### Exercice 1 : Vérification seuils")
         # ✅ Affichage des données
         vibration, temperature, courant = 7, 78, 5
@@ -824,6 +824,69 @@ elif section == "✏️ Exercices":
                     st.success("✅ Correct, tout est normal.")
                 else:
                     st.error("❌ Aucun paramètre critique n'est dépassé.")
+    # ===================== Niveau 6 =====================
+    with st.expander("🛠️ Exercice 6 : Problème complet — Analyse IoT d'une machine"):
+        st.markdown("#### Contexte :")
+        st.markdown("""
+        Une usine a mis en place un système IoT sur une ligne de production.  
+        Les capteurs mesurent :
+        - Vibration (mm/s)
+        - Température (°C)
+        - Courant (A)
+        
+        Les mesures collectées sur 5 jours sont les suivantes :
+        """)
+        
+        import pandas as pd
+        data = {
+            "Jour": ["J1", "J2", "J3", "J4", "J5"],
+            "Vibration (mm/s)": [5.1, 6.5, 7.0, 5.8, 6.2],
+            "Température (°C)": [72, 76, 80, 74, 78],
+            "Courant (A)": [5.0, 6.2, 6.8, 5.5, 6.1],
+            "Temps de fonctionnement (h)": [24, 24, 24, 24, 24],
+            "Temps de réparation (h)": [0, 1, 2, 0, 1]
+        }
+        df = pd.DataFrame(data)
+        st.dataframe(df)
+        
+        st.markdown("""
+        **Seuils critiques :**
+        - Vibration > 6 mm/s  
+        - Température > 75 °C  
+        - Courant > 6 A
+        """)
+        
+        st.markdown("#### Questions :")
+        
+        # Question 1 : Identifier les jours critiques
+        jours_critique = st.multiselect(
+            "Sélectionnez les jours où au moins un capteur dépasse le seuil :",
+            options=df["Jour"].tolist()
+        )
+        
+        # Question 2 : Calcul MTBF et MTTR pour la ligne
+        mtbf_input = st.number_input("MTBF total (heures) :", key="n6_prob_mtbf")
+        mttr_input = st.number_input("MTTR total (heures) :", key="n6_prob_mttr")
+        
+        if st.button("Vérifier l'exercice (N6)", key="btn_n6_prob"):
+            # Points critiques : J2, J3, J5
+            correct_jours = ["J2", "J3", "J5"]
+            mtbf_correct = df["Temps de fonctionnement (h)"].sum() / 3  # 3 pannes
+            mttr_correct = df["Temps de réparation (h)"].sum() / 3
+            
+            # Vérification
+            if set(jours_critique) == set(correct_jours):
+                st.success("✅ Correct ! Jours critiques identifiés.")
+                st.info("💡 J2, J3, J5 ont au moins un capteur dépassant le seuil.")
+            else:
+                st.error(f"❌ Les jours corrects sont : {', '.join(correct_jours)}")
+            
+            if mtbf_input == mtbf_correct and mttr_input == mttr_correct:
+                st.success(f"✅ MTBF et MTTR corrects ! MTBF={mtbf_correct} h, MTTR={mttr_correct} h")
+                st.info("💡 Formules : MTBF = Temps total / Nombre de pannes | MTTR = Temps réparation total / Nombre de pannes")
+            else:
+                st.error(f"❌ Vérifiez vos calculs : MTBF={mtbf_correct} h, MTTR={mttr_correct} h")
+
 
 
 
@@ -894,6 +957,7 @@ elif section == "ℹ️ À propos":
         et accessible.
 
         """)
+
 
 
 

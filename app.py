@@ -633,11 +633,22 @@ elif section == "📖 Ressources":
             """)
     
     with tab2:
-        st.markdown("### Tutoriels vidéo")
+        st.markdown("### Tutoriels YouTube")
         st.markdown("""
-        - 🎬 [Introduction à la Maintenance Prédictive](https://www.youtube.com/watch?v=example1)
-        - 🎬 [Maintenance Prédictive et IoT](https://www.youtube.com/watch?v=example2)
-        - 🎬 [Analyse des vibrations en pratique](https://www.youtube.com/watch?v=example3)
+        - 🎬 [Explication de la maintenance prédictive](https://www.youtube.com/watch?v=2_o1SDy6__U&t=21s&pp=ygUXbWFpbnRlbmFuY2UgcHLDqWRpY3RpdmU%3D)
+        - 🎬 [Getting Started with Predictive Maintenance](https://www.youtube.com/watch?v=RmVWKLbLq2Y&list=PLldSvyce5wd7kKt0p4hUT9FTH66NZat1_)
+        - 🎬 [Identifying Condition Indicators | Predictive Maintenance](https://www.youtube.com/watch?v=pcXr8I2QvHw&list=PLldSvyce5wd7kKt0p4hUT9FTH66NZat1_&index=2)
+        - 🎬[Estimating Remaining Useful Life (RUL) for Prognostics | Predictive Maintenance](https://www.youtube.com/watch?v=Dd_4rbWYgI4&list=PLldSvyce5wd7kKt0p4hUT9FTH66NZat1_&index=3)
+        - 🎬[Feature Extraction Using Diagnostic Feature Designer | Predictive Maintenance](https://www.youtube.com/watch?v=oDd7aEmRNpI&list=PLldSvyce5wd7kKt0p4hUT9FTH66NZat1_&index=4)
+        - 🎬[What is a Digital Twin?](https://www.youtube.com/watch?v=cfbKR48nSyQ&list=PLldSvyce5wd7kKt0p4hUT9FTH66NZat1_&index=5)
+        - 🎬[Predictive Maintenance with MATLAB A Prognostics Case Study](https://www.youtube.com/watch?v=9QUM5jtB0t4&list=PLldSvyce5wd7kKt0p4hUT9FTH66NZat1_&index=6)
+        - 🎬[Predictive Maintenance & IoT](https://www.youtube.com/watch?v=glX3_OBtX-Q)
+        - 🎬[EP2 - Analyse vibratoire - mesure et exploitation des resultats](https://www.youtube.com/watch?v=-fqQOW9sz2U)
+        - 🎬[What is a Vibration Sensor?](https://www.youtube.com/watch?v=3KsRjnn83T0)
+        - 🎬[Thermographie infrarouge](https://youtube.com/shorts/x20Vibr2yhE?si=KEPkBrk1BueUphtW)
+        - 🎬[C_MAPSS Predictive Maintenance](https://www.youtube.com/watch?v=_jaXkoeygko)
+        - 🎬[Turbo Engine RUL Prediction: A Machine Learning Approach](https://www.youtube.com/watch?v=5PKvOZU6RGQ&t=958s)
+        - 🎬[Understanding Predictive Maintenance (serie des videos)](https://www.youtube.com/watch?v=xbRrC2_nAJQ)
         """)
     
     with tab3:
@@ -967,6 +978,7 @@ elif section == "ℹ️ À propos":
         et accessible.
 
         """)
+
 
 
 

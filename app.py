@@ -655,8 +655,37 @@ elif section == "📖 Ressources":
     with tab3:
         st.markdown("[Ressources PDF →](https://drive.google.com/drive/folders/1VAjV-7u9YLm3CSw-CJ9mVapuozQis6hP?usp=sharing)")
     with tab4:
-        st.markdown("- [Kaggle Dataset : Predictive Maintenance](https://www.kaggle.com/datasets)")
-        st.markdown("- [UCI Machine Learning Repository](https://archive.ics.uci.edu/ml/index.php)")
+        st.markdown("## 📊 Jeux de données pour la maintenance prédictive")
+        st.markdown("""
+        1️⃣ **NASA — C-MAPSS (Turbofan Engine RUL)**  
+        - Usage : estimation du RUL, modèles séquentiels (LSTM, survival regression…)  
+        - Format : fichiers texte / CSV (train / test / truth)  
+        - Idéal pour : features time-series, segmentation  
+        - [Télécharger / Source officielle](https://data.nasa.gov/)  
+    
+        2️⃣ **Kaggle / miroirs du C-MAPSS**  
+        - Usage : ZIP/CSV prêt à l’emploi + notebooks Python  
+        - [Télécharger sur Kaggle](https://www.kaggle.com/datasets/)  
+    
+        3️⃣ **FEMTO / PRONOSTIA — Roulements run-to-failure**  
+        - Usage : données vibratoires de roulements, RUL des roulements  
+        - Format : .mat / .txt / zip  
+        - [Télécharger / NASA PCoE](https://www.nasa.gov/) | [GitHub / Kaggle miroirs](https://github.com/)  
+    
+        4️⃣ **IMS Bearings (University of Cincinnati)**  
+        - Usage : essais de roulements (vibrations), diagnostics et RUL  
+        - Format : zip avec séries temporelles (wav/txt)  
+        - [Data.gov / IMS](https://data.gov/)  
+    
+        5️⃣ **IEEE PHM 2012 — Bearing dataset**  
+        - Usage : challenge PHM 2012, reproductions comparables  
+        - Format : zip / CSV / mat  
+        - [GitHub](https://github.com/) | [Kaggle](https://www.kaggle.com/)  
+    
+        6️⃣ **IEEE PHM / autres jeux (batteries, turbomachines)**  
+        - Usage : tests multi-composants, challenges PHM  
+        - [Kaggle](https://www.kaggle.com/) | [NASA PCoE](https://data.nasa.gov/)
+        """)
 
 
 # EXERCICES
@@ -977,6 +1006,7 @@ elif section == "ℹ️ À propos":
         et accessible.
 
         """)
+
 
 
 

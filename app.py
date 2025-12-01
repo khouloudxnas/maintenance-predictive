@@ -132,23 +132,99 @@ elif section == "📚 Théorie":
     st.markdown("### Formation complète pour apprendre la maintenance prédictive de 0% à expert.")
 
     # -------------------- NIVEAU 0 --------------------
-    with st.expander("🟦 Niveau 0 — Comprendre simplement (Introduction)", expanded=True):
-        st.markdown("## 🟦 Niveau 0 — C’est quoi la maintenance prédictive ?")
-        st.markdown("""
-        La maintenance prédictive permet de **prévoir** qu’une machine va tomber en panne **avant** qu’elle ne tombe réellement en panne.
+   with st.expander("🟦 Niveau 0 — Comprendre simplement (Introduction)", expanded=True):
+    st.markdown("## 🟦 Niveau 0 — C’est quoi la maintenance prédictive ?")
 
-        Elle utilise :  
-        - **des capteurs**,  
-        - **des données**,  
-        - **des algorithmes**.
+    st.markdown("""
+    La maintenance prédictive est une **méthode moderne** qui permet de dire :
 
-        **Objectifs :** éviter les pannes, réduire les coûts, améliorer la sécurité.
+    > **“Cette machine risque de tomber en panne bientôt. Interviens maintenant pour éviter le problème.”**
 
-        **Exemple simple :**  
-        Une voiture fait un bruit → tu vas chez le mécanicien.  
-        Une machine industrielle → capteurs → algorithme → alerte avant panne.
-        """)
-        st.info("🌟 Retenir : la maintenance prédictive = anticiper grâce aux données.")
+    Elle transforme la maintenance classique en un système **intelligent**, basé sur l’anticipation plutôt que sur la réaction.
+
+    ---
+
+    ## 🔍 Pourquoi existe-t-elle ?
+    Dans les usines, une panne peut :
+    - arrêter toute la production,
+    - coûter des milliers d'euros,
+    - mettre les travailleurs en danger,
+    - abîmer d’autres équipements.
+
+    Les entreprises veulent donc **savoir à l’avance** si une machine va mal.
+
+    C'est exactement ce que fait la maintenance prédictive.
+
+    ---
+
+    ## ⚙️ Comment ça fonctionne ?  
+    La maintenance prédictive se base sur **3 éléments essentiels :**
+
+    ### 1️⃣ Les capteurs  
+    Ce sont des petits appareils placés sur les machines.
+    Ils mesurent en continu :
+    - vibrations,
+    - température,
+    - courant,
+    - bruit,
+    - pression…
+
+    ➜ Ils servent de **sens** pour la machine : comme les yeux, les oreilles, la peau.
+
+    ### 2️⃣ Les données  
+    Toutes ces mesures sont envoyées vers un ordinateur.
+
+    ➜ Cela crée un historique :  
+    *“Normalement la machine vibre comme ça… mais aujourd’hui elle vibre un peu plus.”*
+
+    ### 3️⃣ Les algorithmes (IA / Machine Learning)  
+    Les algorithmes apprennent à reconnaître :
+    - ce qui est **normal**,
+    - ce qui est **anormal**,
+    - et ce qui annonce une **future défaillance**.
+
+    ➜ Ils envoient alors une alerte :  
+    **“Attention, un roulement semble usé. Prévoir un remplacement dans 3 jours.”**
+
+    ---
+
+    ## 🎯 Les objectifs principaux
+    La maintenance prédictive permet de :
+    - ✔️ éviter les pannes
+    - ✔️ réduire les coûts de maintenance
+    - ✔️ améliorer la sécurité
+    - ✔️ augmenter la durée de vie des machines
+    - ✔️ optimiser le planning des techniciens
+    - ✔️ éviter les arrêts soudains de production
+
+    ---
+
+    ## 🚗 Exemple simple pour bien comprendre
+    **Ta voiture fait un bruit bizarre ➜ tu vas chez le mécanicien.**
+
+    ➤ Tu as détecté un signe **avant** que la panne arrive.
+
+    Dans une usine :
+    - une machine fait un bruit anormal
+    - un capteur sonore le détecte
+    - un algorithme compare ce bruit aux anciens bruits
+    - il voit que ce bruit annonce une défaillance
+    - il prévient le technicien
+
+    ➜ **C’est la même logique, mais 100% automatique et en continu.**
+
+    ---
+
+    ## 🧠 En résumé pour un débutant :
+    - Une machine envoie des signaux  
+    - Les capteurs les captent  
+    - L’IA analyse ces signaux  
+    - Elle prédit si une panne va arriver  
+
+    👉 Résultat : on répare **avant** qu'il ne soit trop tard.
+    """)
+
+    st.info("🌟 À retenir : La maintenance prédictive = anticiper les pannes grâce aux capteurs, aux données et à l’IA.")
 
     # -------------------- NIVEAU 1 --------------------
     with st.expander("🟩 Niveau 1 — Les 3 types de maintenance"):
@@ -572,6 +648,7 @@ elif section == "ℹ️ À propos":
         et accessible.
 
         """)
+
 
 
 

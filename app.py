@@ -610,7 +610,7 @@ elif section == "📖 Ressources":
             st.markdown("""
             #### 🎓 Mathworks
             
-            
+            Cours Gratuits
             [Introduction à la maintenance prédictive →](https://fr.mathworks.com/discovery/predictive-maintenance.html)
             [Série de vidéos sur la maintenance prédictive →](https://fr.mathworks.com/videos/series/predictive-maintenance-tech-talk-series.html)
             [Predictive Maintenance Toolbox →](https://fr.mathworks.com/videos/predictive-maintenance-toolbox-overview-1519682269879.html)
@@ -623,6 +623,9 @@ elif section == "📖 Ressources":
         with col2:
             st.markdown("""
             #### 🎓 Udemy
+
+
+            Cours Payants
        
             
             - [predictive-maintenance →](https://www.udemy.com/course/master-in-predictive-maintenance/)
@@ -965,6 +968,7 @@ elif section == "ℹ️ À propos":
         et accessible.
 
         """)
+
 
 
 

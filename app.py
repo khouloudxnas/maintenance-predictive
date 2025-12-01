@@ -934,8 +934,8 @@ elif section == "ℹ️ À propos":
             "5 exercices avec correction automatique",
             "Visualisations Plotly interactives",
             "Cours, vidéos et articles sélectionnés"
-        ],
-        "Statut": ["✅ Complet", "✅ Complet", "✅ Complet", "✅ Complet"]
+        ]
+        
     }
     
     df_features = pd.DataFrame(features)
@@ -957,6 +957,7 @@ elif section == "ℹ️ À propos":
         et accessible.
 
         """)
+
 
 
 

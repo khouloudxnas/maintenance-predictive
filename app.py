@@ -1079,70 +1079,70 @@ elif section == "📈 Upload & Analyse":
         st.markdown("---")
 
         # ===== RUL =====
-st.markdown("#### 🔮 Prédiction du RUL (Remaining Useful Life)")
-
-if st.session_state.get('model_loaded', False):
-    model = st.session_state['model']
-
-    st.info("💡 Les données doivent être prétraitées comme lors de l'entraînement")
-
-    st.markdown("#### 📌 Sélection des colonnes utilisées par le modèle")
-
-    # 🔥 Multi-select pour choisir les colonnes vraiment utilisées à l'entraînement
-    selected_columns = st.multiselect(
-        "Sélectionnez les colonnes d'entrée du modèle (features utilisées lors de l'entraînement)",
-        options=numeric_cols,
-        default=None,
-        help="Choisissez uniquement les colonnes sur lesquelles votre modèle a été entraîné."
-    )
-
-    # Vérifier qu'au moins une colonne est choisie
-    if selected_columns:
-        st.success(f"📦 {len(selected_columns)} colonnes sélectionnées pour la prédiction.")
-    else:
-        st.warning("⚠️ Vous devez sélectionner les colonnes utilisées pour entraîner votre modèle.")
-
-    # ----- Bouton prédiction -----
-    if st.button("🚀 Lancer la prédiction RUL"):
-        if not selected_columns:
-            st.error("❌ Aucune colonne sélectionnée ! Choisissez les colonnes puis relancez.")
-            st.stop()
-
-        try:
-            # Vérifier la forme des données
-            X = df[selected_columns]
-
-            # Effectuer la prédiction
-            predictions = model.predict(X)
-            df['RUL_Predicted'] = predictions
-
-            st.success("✅ Prédictions effectuées !")
-
-            # Résultats statistiques
-            col1, col2 = st.columns(2)
-            col1.metric("📊 RUL Moyen", f"{predictions.mean():.2f}")
-            col1.metric("📉 RUL Min", f"{predictions.min():.2f}")
-            col2.metric("📈 RUL Max", f"{predictions.max():.2f}")
-            col2.metric("📊 Écart-type", f"{predictions.std():.2f}")
-
-            # Courbe des prédictions
-            fig = px.line(df, y='RUL_Predicted', title="Évolution du RUL Prédit")
-            st.plotly_chart(fig, use_container_width=True)
-
-            # Export CSV
-            st.download_button(
-                "📥 Télécharger les résultats (CSV)",
-                df.to_csv(index=False).encode('utf-8'),
-                "predictions_RUL.csv",
-                "text/csv"
+        st.markdown("#### 🔮 Prédiction du RUL (Remaining Useful Life)")
+        
+        if st.session_state.get('model_loaded', False):
+            model = st.session_state['model']
+        
+            st.info("💡 Les données doivent être prétraitées comme lors de l'entraînement")
+        
+            st.markdown("#### 📌 Sélection des colonnes utilisées par le modèle")
+        
+            # 🔥 Multi-select pour choisir les colonnes vraiment utilisées à l'entraînement
+            selected_columns = st.multiselect(
+                "Sélectionnez les colonnes d'entrée du modèle (features utilisées lors de l'entraînement)",
+                options=numeric_cols,
+                default=None,
+                help="Choisissez uniquement les colonnes sur lesquelles votre modèle a été entraîné."
             )
-
-        except Exception as e:
-            st.error(f"❌ Erreur lors de la prédiction : {str(e)}")
-else:
-    st.warning("⚠️ Veuillez importer un modèle dans l'onglet 'Upload Modèle'")
-
-st.markdown("---")
+        
+            # Vérifier qu'au moins une colonne est choisie
+            if selected_columns:
+                st.success(f"📦 {len(selected_columns)} colonnes sélectionnées pour la prédiction.")
+            else:
+                st.warning("⚠️ Vous devez sélectionner les colonnes utilisées pour entraîner votre modèle.")
+        
+            # ----- Bouton prédiction -----
+            if st.button("🚀 Lancer la prédiction RUL"):
+                if not selected_columns:
+                    st.error("❌ Aucune colonne sélectionnée ! Choisissez les colonnes puis relancez.")
+                    st.stop()
+        
+                try:
+                    # Vérifier la forme des données
+                    X = df[selected_columns]
+        
+                    # Effectuer la prédiction
+                    predictions = model.predict(X)
+                    df['RUL_Predicted'] = predictions
+        
+                    st.success("✅ Prédictions effectuées !")
+        
+                    # Résultats statistiques
+                    col1, col2 = st.columns(2)
+                    col1.metric("📊 RUL Moyen", f"{predictions.mean():.2f}")
+                    col1.metric("📉 RUL Min", f"{predictions.min():.2f}")
+                    col2.metric("📈 RUL Max", f"{predictions.max():.2f}")
+                    col2.metric("📊 Écart-type", f"{predictions.std():.2f}")
+        
+                    # Courbe des prédictions
+                    fig = px.line(df, y='RUL_Predicted', title="Évolution du RUL Prédit")
+                    st.plotly_chart(fig, use_container_width=True)
+        
+                    # Export CSV
+                    st.download_button(
+                        "📥 Télécharger les résultats (CSV)",
+                        df.to_csv(index=False).encode('utf-8'),
+                        "predictions_RUL.csv",
+                        "text/csv"
+                    )
+        
+                except Exception as e:
+                    st.error(f"❌ Erreur lors de la prédiction : {str(e)}")
+        else:
+            st.warning("⚠️ Veuillez importer un modèle dans l'onglet 'Upload Modèle'")
+        
+        st.markdown("---")
 
         # ===== ANOMALIES =====
         st.markdown("#### 🚨 Détection d'Anomalies")
@@ -1247,6 +1247,7 @@ elif section == "ℹ️ À propos":
         et accessible.
 
         """)
+
 
 
 

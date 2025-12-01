@@ -990,8 +990,7 @@ elif section == "📈 Upload & Analyse":
         else:
             st.info("👆 Veuillez importer un fichier CSV pour commencer l'analyse")
     
-# ==================== TAB 2 : Upload Modèle ====================# ===================== UPLOAD & ANALYSE =====================
-
+# ===================== UPLOAD & ANALYSE =====================
 elif section == "📈 Upload & Analyse":
     st.title("📈 Upload & Analyse de Données")
     st.markdown("### Importez votre dataset et votre modèle pour analyser vos données de maintenance")
@@ -1301,131 +1300,6 @@ elif section == "📈 Upload & Analyse":
                 if nb_anomalies > 0:
                     with st.expander("📋 Détails des anomalies détectées"):
                         st.dataframe(df[df['Anomaly']], use_container_width=True)
-        
-        # ========== PRÉDICTION RUL ==========
-        st.markdown("#### 🔮 Prédiction du RUL (Remaining Useful Life)")
-        
-        if 'model_loaded' in st.session_state and st.session_state['model_loaded']:
-            model = st.session_state['model']
-            
-            st.info("💡 Assurez-vous que vos données sont prétraitées de la même manière que lors de l'entraînement du modèle")
-            
-            if st.button("🚀 Lancer la prédiction RUL", type="primary"):
-                try:
-                    # Prédiction (adapter selon votre modèle)
-                    # Exemple simplifié : prédire sur tout le dataset
-                    predictions = model.predict(df[numeric_cols])
-                    
-                    # Ajouter les prédictions au DataFrame
-                    df['RUL_Predicted'] = predictions
-                    
-                    st.success("✅ Prédictions effectuées avec succès !")
-                    
-                    # Affichage des résultats
-                    col1, col2 = st.columns(2)
-                    
-                    with col1:
-                        st.metric("📊 RUL Moyen", f"{predictions.mean():.2f}")
-                        st.metric("📉 RUL Min", f"{predictions.min():.2f}")
-                    
-                    with col2:
-                        st.metric("📈 RUL Max", f"{predictions.max():.2f}")
-                        st.metric("📊 Écart-type", f"{predictions.std():.2f}")
-                    
-                    # Graphique des prédictions
-                    fig = px.line(
-                        df,
-                        y='RUL_Predicted',
-                        title="Évolution du RUL Prédit",
-                        labels={'index': 'Index', 'RUL_Predicted': 'RUL (cycles)'}
-                    )
-                    fig.update_layout(height=400)
-                    st.plotly_chart(fig, use_container_width=True)
-                    
-                    # Téléchargement des résultats
-                    csv = df.to_csv(index=False).encode('utf-8')
-                    st.download_button(
-                        label="📥 Télécharger les résultats (CSV)",
-                        data=csv,
-                        file_name="predictions_RUL.csv",
-                        mime="text/csv"
-                    )
-                    
-                except Exception as e:
-                    st.error(f"❌ Erreur lors de la prédiction : {str(e)}")
-                    st.info("💡 Vérifiez que les colonnes du dataset correspondent aux features attendues par le modèle")
-        else:
-            st.warning("⚠️ Veuillez d'abord charger un modèle dans l'onglet 'Upload Modèle'")
-        
-        # ========== DÉTECTION D'ANOMALIES ==========
-        st.markdown("---")
-        st.markdown("#### 🚨 Détection d'Anomalies")
-        
-        if len(numeric_cols) > 0:
-            anomaly_feature = st.selectbox(
-                "Sélectionnez la variable pour détecter les anomalies",
-                options=numeric_cols,
-                key="anomaly_feature"
-            )
-            
-            threshold = st.slider(
-                "Définir le seuil (écart-type)",
-                min_value=1.0,
-                max_value=5.0,
-                value=3.0,
-                step=0.1
-            )
-            
-            if st.button("🔍 Détecter les anomalies", type="primary"):
-                # Calcul des anomalies basé sur l'écart-type
-                mean = df[anomaly_feature].mean()
-                std = df[anomaly_feature].std()
-                
-                df['Anomaly'] = (df[anomaly_feature] > mean + threshold * std) | \
-                                (df[anomaly_feature] < mean - threshold * std)
-                
-                nb_anomalies = df['Anomaly'].sum()
-                
-                st.metric("🚨 Nombre d'anomalies détectées", nb_anomalies)
-                
-                # Visualisation
-                fig = go.Figure()
-                
-                # Points normaux
-                fig.add_trace(go.Scatter(
-                    x=df[~df['Anomaly']].index,
-                    y=df[~df['Anomaly']][anomaly_feature],
-                    mode='markers',
-                    name='Normal',
-                    marker=dict(color='blue', size=5)
-                ))
-                
-                # Points anomalies
-                fig.add_trace(go.Scatter(
-                    x=df[df['Anomaly']].index,
-                    y=df[df['Anomaly']][anomaly_feature],
-                    mode='markers',
-                    name='Anomalie',
-                    marker=dict(color='red', size=8, symbol='x')
-                ))
-                
-                # Lignes de seuil
-                fig.add_hline(y=mean + threshold * std, line_dash="dash", line_color="red", annotation_text="Seuil haut")
-                fig.add_hline(y=mean - threshold * std, line_dash="dash", line_color="red", annotation_text="Seuil bas")
-                
-                fig.update_layout(
-                    title=f"Détection d'anomalies - {anomaly_feature}",
-                    xaxis_title="Index",
-                    yaxis_title=anomaly_feature,
-                    height=400
-                )
-                
-                st.plotly_chart(fig, use_container_width=True)
-                
-                # Afficher les anomalies
-                if nb_anomalies > 0:
-                    with st.expander("📋 Détails des anomalies détectées"):
-                        st.dataframe(df[df['Anomaly']], use_container_width=True)
 # À PROPOS
 elif section == "ℹ️ À propos":
     st.title("ℹ️ À propos du Portfolio")
@@ -1492,6 +1366,7 @@ elif section == "ℹ️ À propos":
         et accessible.
 
         """)
+
 
 
 

@@ -120,7 +120,7 @@ if section == "🏠 Accueil":
     with col2:
         with st.container():
             st.markdown("### 📖 Ressources")
-            st.write("Accédez à une sélection de cours, vidéos et articles pour approfondir vos connaissances.")
+            st.write("Explorez des ressources PDF, vidéos et datasets pour pratiquer et approfondir vos compétences.")
             
         with st.container():
             st.markdown("### ℹ️ À propos")
@@ -977,6 +977,7 @@ elif section == "ℹ️ À propos":
         et accessible.
 
         """)
+
 
 
 

@@ -931,7 +931,7 @@ elif section == "ℹ️ À propos":
         "Fonctionnalité": ["Théorie interactive", "Exercices pratiques", "Graphiques dynamiques", "Ressources curées"],
         "Description": [
             "Concepts expliqués avec exemples",
-            "5 exercices avec correction automatique",
+            "7 exercices avec correction automatique",
             "Visualisations Plotly interactives",
             "Cours, vidéos et articles sélectionnés"
         ]
@@ -957,6 +957,7 @@ elif section == "ℹ️ À propos":
         et accessible.
 
         """)
+
 
 
 

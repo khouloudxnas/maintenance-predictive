@@ -732,50 +732,68 @@ elif section == "✏️ Exercices":
                 st.error("❌ La moyenne correcte = 6.2")
 
     # ===================== Niveau 4 =====================
+    # ===================== Niveau 4 =====================
     with st.expander("🟥 Niveau 4 — KPI & Calcul"):
         st.markdown("#### Exercice 1 : Calcul MTBF et MTTR")
-        st.markdown("nb_pannes = 5")
-        st.markdown("temps_fonctionnement = 500")
-        st.markdown("temps_reparation = 25")
-        mtbf_input = st.number_input("MTBF :", key="n4_1")
-        mttr_input = st.number_input("MTTR :", key="n4_2")
+        # ✅ Définition correcte des données
+        nb_pannes = 5
+        temps_fonctionnement = 500
+        temps_reparation = 25
+    
+        mtbf_input = st.number_input("MTBF (heures) :", min_value=0.0, step=1.0, key="n4_1")
+        mttr_input = st.number_input("MTTR (heures) :", min_value=0.0, step=0.1, key="n4_2")
+    
         if st.button("Vérifier Exercice 1 (N4)", key="btn_n4_1"):
-            mtbf_correct = temps_fonctionnement/nb_pannes
-            mttr_correct = temps_reparation/nb_pannes
-            if mtbf_input==mtbf_correct and mttr_input==mttr_correct:
+            mtbf_correct = temps_fonctionnement / nb_pannes
+            mttr_correct = temps_reparation / nb_pannes
+            if mtbf_input == mtbf_correct and mttr_input == mttr_correct:
                 st.success("✅ Correct !")
             else:
-                st.error(f"❌ Réponses correctes : MTBF={mtbf_correct}, MTTR={mttr_correct}")
-        
+                st.error(f"❌ Réponses correctes : MTBF = {mtbf_correct}, MTTR = {mttr_correct}")
+    
         st.markdown("#### Exercice 2 : Calcul disponibilité")
-        dispo_input = st.number_input("Disponibilité (%) :", key="n4_3")
+        dispo_input = st.number_input("Disponibilité (%) :", min_value=0.0, step=0.1, key="n4_3")
+    
         if st.button("Vérifier Exercice 2 (N4)", key="btn_n4_2"):
-            dispo_correct = (temps_fonctionnement - temps_reparation)/temps_fonctionnement*100
-            if abs(dispo_input-dispo_correct)<0.5:
+            dispo_correct = (temps_fonctionnement - temps_reparation) / temps_fonctionnement * 100
+            if abs(dispo_input - dispo_correct) < 0.5:
                 st.success("✅ Correct !")
             else:
                 st.error(f"❌ Disponibilité correcte = {round(dispo_correct,1)}%")
 
-    # ===================== Niveau 5 =====================
+# ===================== Niveau 5 =====================
     with st.expander("🟪 Niveau 5 — Prédiction de panne"):
         st.markdown("#### Exercice 1 : Vérification seuils")
-        st.markdown("vibration, temperature, courant = 7, 78, 5")
-        st.markdown("""prediction = st.radio("La machine va-t-elle tomber en panne ?", ("Oui","Non"), key="n5_1")""")
-
+        vibration, temperature, courant = 7, 78, 5
+        prediction = st.radio("La machine va-t-elle tomber en panne ?", ("Oui","Non"), key="n5_1")
+    
         if st.button("Vérifier Exercice 1 (N5)", key="btn_n5_1"):
-            if prediction=="Oui":
-                st.success("✅ Correct !")
+            if vibration > 6 or temperature > 75 or courant > 6:
+                if prediction == "Oui":
+                    st.success("✅ Correct ! La machine présente des signes de défaillance.")
+                else:
+                    st.error("❌ La machine dépasse les seuils critiques !")
             else:
-                st.error("❌ Certains seuils sont dépassés")
-        
+                if prediction == "Non":
+                    st.success("✅ Correct, la machine est normale.")
+                else:
+                    st.error("❌ Aucun seuil critique n'est dépassé.")
+    
         st.markdown("#### Exercice 2 : Analyse multi-capteurs")
         vibration, temperature, courant = 5, 70, 7
         prediction2 = st.radio("Panne probable ?", ("Oui","Non"), key="n5_2")
+    
         if st.button("Vérifier Exercice 2 (N5)", key="btn_n5_2"):
-            if prediction2=="Oui":
-                st.success("✅ Correct ! Courant > seuil")
+            if courant > 6:
+                if prediction2 == "Oui":
+                    st.success("✅ Correct ! Courant > seuil critique.")
+                else:
+                    st.error("❌ Le courant dépasse le seuil critique.")
             else:
-                st.error("❌ Le courant dépasse le seuil critique")
+                if prediction2 == "Non":
+                    st.success("✅ Correct, tout est normal.")
+                else:
+                    st.error("❌ Aucun paramètre critique n'est dépassé.")
 
     
 # À PROPOS
@@ -844,6 +862,7 @@ elif section == "ℹ️ À propos":
         et accessible.
 
         """)
+
 
 
 

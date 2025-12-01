@@ -643,153 +643,101 @@ elif section == "📖 Ressources":
 elif section == "✏️ Exercices":
     st.title("✏️ Exercices et Cas Pratiques")
     st.markdown("### Testez vos connaissances avec des exercices interactifs")
-    
-    # Exercice 1
-    with st.expander("📊 **Exercice 1 : Détection d'anomalies** - Identifiez les pics de vibration", expanded=True):
-        st.markdown("#### Identifiez les jours où la vibration dépasse la valeur normale (> 6)")
-        
+
+    # Niveau 0 - Théorie simple
+    with st.expander("🟦 Niveau 0 — Quiz Théorique", expanded=True):
+        st.markdown("#### Quel est l'objectif principal de la maintenance prédictive ?")
+        reponse0 = st.radio("Choisissez votre réponse :", 
+                            ("Réparer après panne", "Entretien planifié", "Anticiper les pannes"))
+        if st.button("Vérifier (Niveau 0)", key="q0"):
+            if reponse0 == "Anticiper les pannes":
+                st.success("✅ Correct ! La maintenance prédictive vise à anticiper les pannes.")
+            else:
+                st.error("❌ Ce n'est pas correct. Réfléchis aux objectifs de la maintenance prédictive.")
+
+    # Niveau 1 - Types de maintenance
+    with st.expander("🟩 Niveau 1 — Identifier le type de maintenance", expanded=True):
+        st.markdown("#### Quel type de maintenance intervient après la panne ?")
+        reponse1 = st.radio("Choisissez :", ("Corrective", "Préventive", "Prédictive"))
+        if st.button("Vérifier (Niveau 1)", key="q1"):
+            if reponse1 == "Corrective":
+                st.success("✅ Exact ! Corrective = après panne.")
+            else:
+                st.error("❌ Mauvaise réponse. Pense au timing de l'intervention.")
+
+    # Niveau 2 - Analyse simple de capteurs
+    with st.expander("🟨 Niveau 2 — Analyse des capteurs", expanded=True):
+        st.markdown("#### Repérez les anomalies sur ces mesures de température (°C) :")
+        temp_data = [70, 72, 71, 74, 78, 80, 72, 71, 69, 82]
+        seuil = 75
+        st.write(temp_data)
+        anomalies = st.multiselect("Sélectionnez les indices (>75°C) :", options=list(range(len(temp_data))))
+        reponse2 = [4, 5, 9]
+        if st.button("Vérifier (Niveau 2)", key="q2"):
+            if set(anomalies) == set(reponse2):
+                st.success("✅ Bien joué ! Vous avez identifié toutes les anomalies.")
+            else:
+                st.error(f"❌ Indices corrects : {reponse2}")
+
+    # Niveau 3 - Visualisation & Data Analysis
+    with st.expander("🟧 Niveau 3 — Détection d'anomalies", expanded=True):
+        st.markdown("#### Sur 15 jours, identifiez les pics de vibration > 6 mm/s")
         np.random.seed(42)
-        jours = pd.date_range(start="2025-12-01", periods=30)
-        vibration = np.random.normal(5, 1, 30)
+        jours = pd.date_range(start="2025-12-01", periods=15)
+        vibration = np.random.normal(5, 1, 15)
+        vibration[3] = 7
         vibration[10] = 8
-        vibration[25] = 7
         df = pd.DataFrame({"Jour": jours, "Vibration": vibration})
-        
-        # Graphique amélioré
         fig = go.Figure()
-        fig.add_trace(go.Scatter(
-            x=df["Jour"], 
-            y=df["Vibration"],
-            mode='lines+markers',
-            name='Vibration',
-            line=dict(color='#2E86DE', width=2),
-            marker=dict(size=8)
-        ))
-        fig.add_hline(y=6, line_dash="dash", line_color="red", 
-                     annotation_text="Seuil normal")
-        fig.update_layout(
-            title="Mesure de vibration sur 30 jours",
-            xaxis_title="Jour",
-            yaxis_title="Vibration (mm/s)",
-            hovermode='x unified',
-            plot_bgcolor='white'
-        )
+        fig.add_trace(go.Scatter(x=df["Jour"], y=df["Vibration"], mode='lines+markers', name='Vibration'))
+        fig.add_hline(y=6, line_dash="dash", line_color="red", annotation_text="Seuil normal")
         st.plotly_chart(fig, use_container_width=True)
-        
-        jours_anomalie = st.multiselect(
-            "Sélectionnez les jours avec anomalie :", 
-            options=df['Jour'].dt.strftime('%Y-%m-%d').tolist()
-        )
-        
-        reponse_correcte = ["2025-12-11", "2025-12-26"]
-        
-        if jours_anomalie:
-            if set(jours_anomalie) == set(reponse_correcte):
-                st.success("✅ Excellent ! Vous avez identifié toutes les anomalies.")
-                st.info("💡 Les jours 11 et 26 dépassent la vibration normale, indiquant des anomalies potentielles.")
+        jours_anomalie = st.multiselect("Sélectionnez les jours avec anomalie :", options=df['Jour'].dt.strftime('%Y-%m-%d').tolist())
+        reponse3 = ["2025-12-04", "2025-12-11"]
+        if st.button("Vérifier (Niveau 3)", key="q3"):
+            if set(jours_anomalie) == set(reponse3):
+                st.success("✅ Correct !")
             else:
-                st.error(f"❌ Pas tout à fait. Les jours corrects sont : {', '.join(reponse_correcte)}")
+                st.error(f"❌ Les jours corrects sont : {', '.join(reponse3)}")
 
-    # Exercice 2
-    with st.expander("🔢 **Exercice 2 : Calcul de KPI** - MTBF et MTTR"):
-        st.markdown("""
-        #### Calculez les indicateurs clés
-        **Données :**
-        - Nombre de pannes : 4
-        - Temps total de fonctionnement : 400 h
-        - Temps total de réparation : 20 h
-        """)
-        
-        col1, col2 = st.columns(2)
-        with col1:
-            mtbf_input = st.number_input("MTBF (heures) :", min_value=0.0, step=1.0)
-        with col2:
-            mttr_input = st.number_input("MTTR (heures) :", min_value=0.0, step=0.1)
-        
-        if st.button("🎯 Vérifier la réponse", key="ex2"):
-            mtbf_correct = 400/4
-            mttr_correct = 20/4
+    # Niveau 4 - KPI simple
+    with st.expander("🟥 Niveau 4 — Calcul KPI", expanded=True):
+        st.markdown("#### Calculez MTBF et MTTR")
+        nb_pannes = 5
+        temps_fonctionnement = 500
+        temps_reparation = 25
+        mtbf_input = st.number_input("MTBF :", min_value=0.0, step=1.0)
+        mttr_input = st.number_input("MTTR :", min_value=0.0, step=0.1)
+        if st.button("Vérifier (Niveau 4)", key="q4"):
+            mtbf_correct = temps_fonctionnement/nb_pannes
+            mttr_correct = temps_reparation/nb_pannes
             if mtbf_input == mtbf_correct and mttr_input == mttr_correct:
-                st.success("✅ Parfait ! Vos calculs sont corrects.")
-                st.info(f"💡 **Formules :** MTBF = 400/4 = {mtbf_correct} h | MTTR = 20/4 = {mttr_correct} h")
+                st.success("✅ Parfait !")
             else:
-                st.error(f"❌ Réessayez. **Indices :** MTBF = Temps total / Nombre de pannes | MTTR = Temps réparation / Nombre de pannes")
+                st.error(f"❌ Réponses correctes : MTBF={mtbf_correct}, MTTR={mttr_correct}")
 
-    # Exercice 3
-    with st.expander("❓ **Exercice 3 : Quiz Théorique** - Testez vos connaissances"):
-        st.markdown("#### Quel type de maintenance prévient les pannes grâce aux données de capteurs ?")
-        
-        reponse = st.radio(
-            "Choisissez votre réponse :",
-            ("Corrective", "Préventive", "Prédictive"),
-            key="quiz1"
-        )
-        
-        if st.button("🎯 Vérifier la réponse", key="ex3"):
-            if reponse == "Prédictive":
-                st.success("✅ Exact ! La maintenance prédictive est la bonne réponse.")
-                st.info("💡 La maintenance prédictive utilise les données des capteurs pour détecter les anomalies avant la panne.")
-            else:
-                st.error("❌ Ce n'est pas la bonne réponse. Pensez au type de maintenance qui utilise l'analyse de données.")
-
-    # Exercice 4
-    with st.expander("🔮 **Exercice 4 : Prédiction de panne** - Analysez les mesures"):
-        st.markdown("""
-        #### Analysez les mesures et prédisez une panne
-        
-        **Mesures actuelles :**
-        - Vibration : 7 mm/s
-        - Température : 80°C
-        - Courant : 5A
-        
-        **Seuils critiques :**
-        - Vibration > 6 mm/s ⚠️
-        - Température > 75°C ⚠️
-        - Courant > 6A ⚠️
-        """)
-        
-        prediction = st.radio(
-            "La machine va-t-elle tomber en panne ?",
-            ("Oui", "Non"),
-            key="pred1"
-        )
-        
-        if st.button("🎯 Vérifier la réponse", key="ex4"):
+    # Niveau 5 - Prédiction simple
+    with st.expander("🟪 Niveau 5 — Prédiction de panne", expanded=True):
+        st.markdown("#### La machine présente : Vibration=7, Température=78, Courant=5A\nSeuils : V>6, T>75, I>6")
+        prediction = st.radio("La machine va-t-elle tomber en panne ?", ("Oui", "Non"), key="pred5")
+        if st.button("Vérifier (Niveau 5)", key="q5"):
             if prediction == "Oui":
-                st.success("✅ Correct ! La machine présente des signes de défaillance imminente.")
-                st.info("💡 **Analyse :** Vibration = 7 > 6 ET Température = 80 > 75 → Panne probable")
+                st.success("✅ Correct ! Les seuils sont dépassés.")
             else:
-                st.error("❌ Attention ! Relisez les valeurs et les seuils critiques.")
+                st.error("❌ Attention, certains seuils sont dépassés.")
 
-    # Exercice 5
-    with st.expander("🏭 **Exercice 5 : Cas pratique complet** - Analyse de production"):
-        st.markdown("""
-        #### Analysez une ligne de production
-        
-        **Contexte :**
-        - 3 arrêts en 100 heures
-        - Temps d'arrêt total : 9 heures
-        
-        **Calculez :**
-        1. Disponibilité (%)
-        2. Fiabilité approximative (%)
-        """)
-        
-        col1, col2 = st.columns(2)
-        with col1:
-            dispo_input = st.number_input("Disponibilité (%) :", min_value=0.0, max_value=100.0, step=0.1)
-        with col2:
-            fiab_input = st.number_input("Fiabilité (%) :", min_value=0.0, max_value=100.0, step=0.1)
-        
-        if st.button("🎯 Vérifier la réponse", key="ex5"):
-            dispo_correct = (100-9)/100*100
-            fiab_correct = (100-9)/100*50
-            
-            if abs(dispo_input - dispo_correct) < 0.5 and abs(fiab_input - fiab_correct) < 0.5:
-                st.success("✅ Excellent travail ! Vos calculs sont précis.")
-                st.info(f"💡 **Formules :** Disponibilité = (100-9)/100×100 = {round(dispo_correct,1)}% | Fiabilité ≈ {round(fiab_correct,1)}%")
+    # Niveau 6 - Mini-projet guidé
+    with st.expander("🟫 Niveau 6 — Mini-projet", expanded=True):
+        st.markdown("#### Analyse d'une ligne de production (3 arrêts, 12h d'arrêt sur 120h total)")
+        dispo_input = st.number_input("Disponibilité (%) :", min_value=0.0, max_value=100.0, step=0.1, key="dispo6")
+        fiab_input = st.number_input("Fiabilité (%) :", min_value=0.0, max_value=100.0, step=0.1, key="fiab6")
+        if st.button("Vérifier (Niveau 6)", key="q6"):
+            dispo_correct = (120-12)/120*100
+            fiab_correct = (120-12)/120*50
+            if abs(dispo_input-dispo_correct)<0.5 and abs(fiab_input-fiab_correct)<0.5:
+                st.success("✅ Bien joué !")
             else:
-                st.error(f"❌ Pas tout à fait. **Aide :** Disponibilité = Temps de fonctionnement / Temps total")
+                st.error(f"❌ Correct : Disponibilité={round(dispo_correct,1)}%, Fiabilité≈{round(fiab_correct,1)}%")
 
 # À PROPOS
 elif section == "ℹ️ À propos":
@@ -857,6 +805,7 @@ elif section == "ℹ️ À propos":
         et accessible.
 
         """)
+
 
 
 

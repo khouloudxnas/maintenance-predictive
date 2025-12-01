@@ -3,6 +3,8 @@ import numpy as np
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
+import pickle
+import joblib
 
 # Configuration de la page
 st.set_page_config(
@@ -1215,6 +1217,7 @@ elif section == "ℹ️ À propos":
         et accessible.
 
         """)
+
 
 
 

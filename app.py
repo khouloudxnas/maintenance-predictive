@@ -731,40 +731,46 @@ elif section == "✏️ Exercices":
             else:
                 st.error("❌ La moyenne correcte = 6.2")
 
-    # ===================== Niveau 4 =====================
+
     # ===================== Niveau 4 =====================
     with st.expander("🟥 Niveau 4 — KPI & Calcul"):
         st.markdown("#### Exercice 1 : Calcul MTBF et MTTR")
-        # ✅ Définition correcte des données
+        # ✅ Affichage des données
         nb_pannes = 5
         temps_fonctionnement = 500
         temps_reparation = 25
-    
-        mtbf_input = st.number_input("MTBF (heures) :", min_value=0.0, step=1.0, key="n4_1")
-        mttr_input = st.number_input("MTTR (heures) :", min_value=0.0, step=0.1, key="n4_2")
-    
+        st.write(f"**Données :** Nombre de pannes = {nb_pannes}, Temps de fonctionnement = {temps_fonctionnement} h, Temps de réparation = {temps_reparation} h")
+        
+        mtbf_input = st.number_input("MTBF (heures) :", key="n4_1")
+        mttr_input = st.number_input("MTTR (heures) :", key="n4_2")
+        
         if st.button("Vérifier Exercice 1 (N4)", key="btn_n4_1"):
             mtbf_correct = temps_fonctionnement / nb_pannes
             mttr_correct = temps_reparation / nb_pannes
             if mtbf_input == mtbf_correct and mttr_input == mttr_correct:
                 st.success("✅ Correct !")
             else:
-                st.error(f"❌ Réponses correctes : MTBF = {mtbf_correct}, MTTR = {mttr_correct}")
+                st.error(f"❌ Réponses correctes : MTBF = {mtbf_correct} h, MTTR = {mttr_correct} h")
     
-        st.markdown("#### Exercice 2 : Calcul disponibilité")
-        dispo_input = st.number_input("Disponibilité (%) :", min_value=0.0, step=0.1, key="n4_3")
-    
+        st.markdown("#### Exercice 2 : Calcul Disponibilité")
+        st.write("**Formule :** Disponibilité = (Temps de fonctionnement - Temps de réparation) / Temps de fonctionnement × 100")
+        
+        dispo_input = st.number_input("Disponibilité (%) :", key="n4_3")
+        
         if st.button("Vérifier Exercice 2 (N4)", key="btn_n4_2"):
             dispo_correct = (temps_fonctionnement - temps_reparation) / temps_fonctionnement * 100
             if abs(dispo_input - dispo_correct) < 0.5:
                 st.success("✅ Correct !")
             else:
                 st.error(f"❌ Disponibilité correcte = {round(dispo_correct,1)}%")
-
-# ===================== Niveau 5 =====================
+    
+    # ===================== Niveau 5 =====================
     with st.expander("🟪 Niveau 5 — Prédiction de panne"):
         st.markdown("#### Exercice 1 : Vérification seuils")
+        # ✅ Affichage des données
         vibration, temperature, courant = 7, 78, 5
+        st.write(f"**Données :** Vibration = {vibration} mm/s, Température = {temperature} °C, Courant = {courant} A")
+        
         prediction = st.radio("La machine va-t-elle tomber en panne ?", ("Oui","Non"), key="n5_1")
     
         if st.button("Vérifier Exercice 1 (N5)", key="btn_n5_1"):
@@ -781,6 +787,8 @@ elif section == "✏️ Exercices":
     
         st.markdown("#### Exercice 2 : Analyse multi-capteurs")
         vibration, temperature, courant = 5, 70, 7
+        st.write(f"**Données :** Vibration = {vibration} mm/s, Température = {temperature} °C, Courant = {courant} A")
+    
         prediction2 = st.radio("Panne probable ?", ("Oui","Non"), key="n5_2")
     
         if st.button("Vérifier Exercice 2 (N5)", key="btn_n5_2"):
@@ -794,6 +802,7 @@ elif section == "✏️ Exercices":
                     st.success("✅ Correct, tout est normal.")
                 else:
                     st.error("❌ Aucun paramètre critique n'est dépassé.")
+
 
     
 # À PROPOS
@@ -862,6 +871,7 @@ elif section == "ℹ️ À propos":
         et accessible.
 
         """)
+
 
 
 

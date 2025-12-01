@@ -279,26 +279,50 @@ elif section == "📚 Théorie":
 
 
     # -------------------- NIVEAU 2 --------------------
-    with st.expander("🟨 Niveau 2 — Capteurs & Données"):
+    with st.expander("🟨 Niveau 2 — Capteurs & Données", expanded=True):
         st.markdown("## 🟨 Niveau 2 — Capteurs utilisés en maintenance prédictive")
+    
         st.markdown("""
-        Les capteurs sont les **yeux et les oreilles** des machines.
-
-        ### Capteurs courants :
-        - 🌊 **Vibrations** → roulements, déséquilibre
-        - 🌡️ **Température** → surchauffe
-        - ⚡ **Courant** → surcharge moteur
-        - 🔊 **Acoustique / Ultrasons** → fissures, fuites
-        - 🧰 **Pression** → hydraulique / pneumatique
-        - 💧 **Humidité** → moteurs, transformateurs
-
-        ### Notions essentielles :
-        - Fréquence d’échantillonnage  
-        - Bruit du signal  
-        - Intervalle de mesure  
-        - Qualité des données  
+        Pour **anticiper les pannes**, il est crucial de mesurer l'état des machines.  
+        Les capteurs sont les **yeux et les oreilles** des équipements industriels.
+    
+        ---
+    
+        ### 🌊 Capteur de vibrations
+        - Détecte déséquilibres, usure des roulements, désalignements  
+        - Permet d’identifier une défaillance mécanique imminente
+    
+        ### 🌡️ Capteur de température
+        - Surveille la surchauffe des moteurs, transformateurs ou machines  
+        - Les anomalies thermiques précèdent souvent les pannes
+    
+        ### ⚡ Capteur de courant électrique
+        - Détecte surcharge moteur ou anomalies électriques  
+        - Utile pour prévenir les courts-circuits ou surconsommation
+    
+        ### 🔊 Capteur acoustique / ultrasons
+        - Détecte fissures, fuites d’air ou de gaz, bruits anormaux  
+        - Permet une maintenance avant l’apparition de dommages visibles
+    
+        ### 🧰 Capteur de pression
+        - Surveille systèmes hydrauliques ou pneumatiques  
+        - Permet de détecter fuites ou baisse de performance
+    
+        ### 💧 Capteur d’humidité
+        - Surveille l’humidité dans moteurs ou transformateurs  
+        - Prévient la corrosion et les courts-circuits
+    
+        ---
+    
+        ### Notions essentielles à connaître
+        - **Fréquence d’échantillonnage** : combien de fois les données sont relevées  
+        - **Bruit du signal** : perturbations qui peuvent fausser les mesures  
+        - **Intervalle de mesure** : période entre deux relevés successifs  
+        - **Qualité des données** : données fiables = meilleure prédiction
         """)
-        st.info("🎯 Une bonne prédiction = données propres + capteurs bien choisis.")
+    
+        st.info("🎯 Une bonne prédiction = données propres + capteurs bien choisis")
+
 
     # -------------------- NIVEAU 3 --------------------
     with st.expander("🟧 Niveau 3 — Analyse de données (Data Analysis)"):
@@ -680,6 +704,7 @@ elif section == "ℹ️ À propos":
         et accessible.
 
         """)
+
 
 
 

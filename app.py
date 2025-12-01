@@ -734,9 +734,9 @@ elif section == "✏️ Exercices":
     # ===================== Niveau 4 =====================
     with st.expander("🟥 Niveau 4 — KPI & Calcul"):
         st.markdown("#### Exercice 1 : Calcul MTBF et MTTR")
-        nb_pannes = 5
-        temps_fonctionnement = 500
-        temps_reparation = 25
+        st.markdown("nb_pannes = 5)"
+        st.markdown("temps_fonctionnement = 500")
+        st.markdown("temps_reparation = 25")
         mtbf_input = st.number_input("MTBF :", key="n4_1")
         mttr_input = st.number_input("MTTR :", key="n4_2")
         if st.button("Vérifier Exercice 1 (N4)", key="btn_n4_1"):
@@ -759,8 +759,8 @@ elif section == "✏️ Exercices":
     # ===================== Niveau 5 =====================
     with st.expander("🟪 Niveau 5 — Prédiction de panne"):
         st.markdown("#### Exercice 1 : Vérification seuils")
-        vibration, temperature, courant = 7, 78, 5
-        prediction = st.radio("La machine va-t-elle tomber en panne ?", ("Oui","Non"), key="n5_1")
+        st.markdown("vibration, temperature, courant = 7, 78, 5")
+        st.markdown("prediction = st.radio("La machine va-t-elle tomber en panne ?", ("Oui","Non"), key="n5_1")")
         if st.button("Vérifier Exercice 1 (N5)", key="btn_n5_1"):
             if prediction=="Oui":
                 st.success("✅ Correct !")
@@ -776,26 +776,7 @@ elif section == "✏️ Exercices":
             else:
                 st.error("❌ Le courant dépasse le seuil critique")
 
-    # ===================== Niveau 6 =====================
-    with st.expander("🟫 Niveau 6 — Mini-projet guidé"):
-        st.markdown("#### Exercice 1 : Disponibilité")
-        dispo_input = st.number_input("Disponibilité (%) :", key="n6_1")
-        if st.button("Vérifier Exercice 1 (N6)", key="btn_n6_1"):
-            dispo_correct = (120-12)/120*100
-            if abs(dispo_input-dispo_correct)<0.5:
-                st.success("✅ Correct !")
-            else:
-                st.error(f"❌ Correct = {round(dispo_correct,1)}%")
-        
-        st.markdown("#### Exercice 2 : Fiabilité approximative")
-        fiab_input = st.number_input("Fiabilité (%) :", key="n6_2")
-        if st.button("Vérifier Exercice 2 (N6)", key="btn_n6_2"):
-            fiab_correct = (120-12)/120*50
-            if abs(fiab_input-fiab_correct)<0.5:
-                st.success("✅ Correct !")
-            else:
-                st.error(f"❌ Correct ≈ {round(fiab_correct,1)}%")
-
+    
 # À PROPOS
 elif section == "ℹ️ À propos":
     st.title("ℹ️ À propos du Portfolio")
@@ -862,6 +843,7 @@ elif section == "ℹ️ À propos":
         et accessible.
 
         """)
+
 
 
 
